@@ -1,0 +1,8 @@
+{
+  "name": "person-ionic-demo",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular",
+  "id": "69b030fa"
+}
