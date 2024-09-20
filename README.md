@@ -25,3 +25,6 @@ android studio打开android目录
 
 确保安装了这个，否则无法启用wifi调试
 ![alt text](image-3.png)
+
+打包
+![alt text](image-4.png)
