@@ -14,9 +14,9 @@ export interface Message {
 export class DataService {
   public messages: Message[] = [
     {
-      fromName: 'Matt Chorsey',
-      subject: 'New event: Trip to Vegas',
-      date: '9:32 AM',
+      fromName: '这是第一条数据',
+      subject: 'Long time no chat',
+      date: '6:12 AM',
       id: 0,
       read: false
     },
@@ -67,6 +67,20 @@ export class DataService {
       subject: 'Placeholder Headhots',
       date: 'Last Week',
       id: 7,
+      read: false
+    },
+    {
+      fromName: '测试',
+      subject: '测试',
+      date: '测试',
+      id: 8,
+      read: false
+    },
+    {
+      fromName: '测试2',
+      subject: '2测试2',
+      date: '测试2',
+      id: 9,
       read: false
     }
   ];
