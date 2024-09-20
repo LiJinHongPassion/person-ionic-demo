@@ -28,3 +28,7 @@ android studio打开android目录
 
 打包
 ![alt text](image-4.png)
+
+代码更新后，同步刷新安卓代码
+
+ng build && npx cap copy
