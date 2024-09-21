@@ -13,7 +13,6 @@ const routes: Routes = [
   {
     path: 'person',
     loadChildren: () => import('./pages/person/person.module').then(m => m.PersonModule),
-    pathMatch: 'full'
   },
   {
     path: '',
@@ -24,7 +23,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
+    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules, useHash: true })
   ],
   exports: [RouterModule]
 })
