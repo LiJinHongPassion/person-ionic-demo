@@ -20,14 +20,6 @@
   </ion-header>
   
   <ion-list>
-
-<button
-style="width: 100px; height: 100px; "
-class="btn"
-  (click)="gotoPersonList()"
->
-按钮
-</button>
     <app-message *ngFor="let message of getMessages()" [message]="message"></app-message>
   </ion-list>
-</ion-content>
+</ion-content> 

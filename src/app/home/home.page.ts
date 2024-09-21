@@ -3,6 +3,7 @@ import { RefresherCustomEvent } from '@ionic/angular';
 import { MessageComponent } from '../message/message.component';
 
 import { DataService, Message } from '../services/data.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -10,8 +11,9 @@ import { DataService, Message } from '../services/data.service';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
+
   private data = inject(DataService);
-  constructor() {}
+  constructor(private router: Router, private activeRouter: ActivatedRoute) {}
 
   refresh(ev: any) {
     setTimeout(() => {
@@ -22,4 +24,9 @@ export class HomePage {
   getMessages(): Message[] {
     return this.data.getMessages();
   }
+
+  gotoPersonList() {
+    // console.log(this.activeRouter.)
+    this.router.navigateByUrl('/person')
+    }
 }

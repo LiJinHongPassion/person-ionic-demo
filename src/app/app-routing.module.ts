@@ -11,6 +11,11 @@ const routes: Routes = [
     loadChildren: () => import('./view-message/view-message.module').then( m => m.ViewMessagePageModule)
   },
   {
+    path: 'person',
+    loadChildren: () => import('./person/person.module').then(m => m.PersonModule),
+    pathMatch: 'full'
+  },
+  {
     path: '',
     redirectTo: 'home',
     pathMatch: 'full'
