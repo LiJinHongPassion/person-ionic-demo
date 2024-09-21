@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { PersonListComponent } from './person-list/person-list.component';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
-import { MessageComponentModule } from "../message/message.module";
+import { MessageComponentModule } from "../../component/message/message.module";
 import { PersonRoutingModule } from './person-routing.module';
 
 const declaraions: any = [
