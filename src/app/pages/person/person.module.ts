@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { MessageComponentModule } from "../../component/message/message.module";
 import { PersonRoutingModule } from './person-routing.module';
+import { TranslateModule } from '@ngx-translate/core';
 
 const declaraions: any = [
   PersonListComponent,
@@ -16,7 +17,9 @@ const declaraions: any = [
     FormsModule,
     IonicModule,
     MessageComponentModule,
-    PersonRoutingModule
+    PersonRoutingModule,
+    // 引入国际化模块
+    TranslateModule
 ],
   declarations: [...declaraions],
 })

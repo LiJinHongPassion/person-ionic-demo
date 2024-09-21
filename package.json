@@ -10,7 +10,8 @@
     "update-android": "ng build && npx cap copy",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "lint": "ng lint"
+    "lint": "ng lint",
+    "extract": "ngx-translate-extract --input ./src/app --output ./src/assets/i18n/{zh-cn,zh-hk,en}.json --sort --format namespaced-json --format-indentation ' '"
   },
   "private": true,
   "dependencies": {
@@ -28,6 +29,8 @@
     "@capacitor/keyboard": "6.0.2",
     "@capacitor/status-bar": "6.0.1",
     "@ionic/angular": "^8.0.0",
+    "@ngx-translate/core": "^15.0.0",
+    "@ngx-translate/http-loader": "^8.0.0",
     "ionicons": "^7.0.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
@@ -43,6 +46,7 @@
     "@angular/cli": "^18.0.0",
     "@angular/compiler-cli": "^18.0.0",
     "@angular/language-service": "^18.0.0",
+    "@biesbjerg/ngx-translate-extract": "^7.0.4",
     "@capacitor/cli": "6.1.2",
     "@ionic/angular-toolkit": "^11.0.1",
     "@types/jasmine": "~5.1.0",
