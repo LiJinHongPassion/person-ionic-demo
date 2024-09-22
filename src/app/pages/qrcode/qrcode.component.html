@@ -13,15 +13,24 @@
   <ion-item>
     <ion-input [(ngModel)]="text"></ion-input>
     <ion-button style="min-width: fit-content;" (click)="onQrClick()">{{ 'qrcode.translate' | translate }}</ion-button>
+    <ion-button style="min-width: fit-content;" (click)="onQrDecodeClick()">{{ 'qrcode.decode' | translate }}</ion-button>
   </ion-item>
 
-  <ion-item *ngIf="workText">
+  <ion-item *ngIf="action === 'encode' && workText">
    {{'content' | translate}}: <div [innerText]="workText"></div>
   </ion-item>
-  <ion-item *ngIf="workText">
-    <qrcode [qrdata]="workText" [width]="256" [errorCorrectionLevel]="'M'"></qrcode>
+  <ion-item *ngIf="action === 'encode' && workText">
+    <div style="text-align: center;">
+      <qrcode [qrdata]="workText" [width]="256" [errorCorrectionLevel]="'M'"></qrcode>
+    </div>
   </ion-item>
-  
+
+  <ion-item [style]="{display: action  === 'decode' ? 'block' : 'none'}">
+    {{'decode.content' | translate}}: <div [innerText]="decodeText"></div>
+  </ion-item>
+  <ion-item [style]="{display: action  === 'decode' ? 'block' : 'none'}">
+    <canvas #qrCanvas id="qrCanvas" width="300" height="300"></canvas>
+  </ion-item>
 
 
 </ion-content>
