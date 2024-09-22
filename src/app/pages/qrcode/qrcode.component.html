@@ -1,17 +1,25 @@
-<ion-header [translucent]="true">
+<!-- <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
       Tab 1
     </ion-title>
   </ion-toolbar>
-</ion-header>
+</ion-header> -->
+<app-common-header [translucent]="true" [title]="'qrcode.create' | translate"></app-common-header>
 
 <ion-content [fullscreen]="true">
-  <app-common-header [title]="'test' | translate"></app-common-header>
+  <app-common-header [collapse]="'condense'" [title]="'qrcode.create' | translate"></app-common-header>
 
   <ion-item>
     <ion-input [(ngModel)]="text"></ion-input>
     <ion-button style="min-width: fit-content;" (click)="onQrClick()">{{ 'qrcode.translate' | translate }}</ion-button>
+  </ion-item>
+
+  <ion-item *ngIf="workText">
+   {{'content' | translate}}: <div [innerText]="workText"></div>
+  </ion-item>
+  <ion-item *ngIf="workText">
+    <qrcode [qrdata]="workText" [width]="256" [errorCorrectionLevel]="'M'"></qrcode>
   </ion-item>
   
 

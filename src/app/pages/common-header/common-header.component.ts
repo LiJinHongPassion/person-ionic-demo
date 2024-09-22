@@ -8,6 +8,8 @@ import { Component, Input, OnInit } from '@angular/core';
 export class CommonHeaderComponent   {
 
   @Input() title!: string;
+  @Input() translucent: boolean = false;
+  @Input() collapse: string = '';
   constructor() { }
  
 

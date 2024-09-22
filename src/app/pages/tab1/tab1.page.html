@@ -7,17 +7,16 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <app-common-header [title]="'test' | translate"></app-common-header>
   <ion-card *ngFor="let card of cardList" [routerLink]="card.routerLink" routerLinkActive="router-link-active" >
     <img alt="Silhouette of mountains" [src]="card.img" />
   
     <ion-card-header>
-      <ion-card-title>{{card.title}}</ion-card-title>
-      <ion-card-subtitle>{{card.subtitle}}</ion-card-subtitle>
+      <ion-card-title>{{card.titleId | translate}}</ion-card-title>
+      <!-- <ion-card-subtitle>{{card.subtitleId | translate}}</ion-card-subtitle> -->
     </ion-card-header>
   
     <ion-card-content>
-      {{card.content}}
+      {{card.contentId | translate}}
     </ion-card-content>
   </ion-card>
 

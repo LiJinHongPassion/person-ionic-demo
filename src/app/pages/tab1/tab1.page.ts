@@ -10,9 +10,8 @@ export class Tab1Page {
   cardList = [
     {
       img: 'https://ionicframework.com/docs/img/demos/card-media.png',
-      title: '标题',
-      subtitle: '子标题',
-      content: '内容',
+      titleId: 'qrcode.create',
+      contentId: 'qrcode.content',
       routerLink: "/qrcode"
     }
   ]

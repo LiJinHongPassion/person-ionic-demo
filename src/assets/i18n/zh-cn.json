@@ -1,4 +1,7 @@
 {
     "test": "ljh国际化",
-    "qrcode.translate": "生成"
+    "qrcode.translate": "生成",
+    "content": "内容",
+    "qrcode.create": "二维码生成",
+    "qrcode.content": "离线生成二维码，不记录任何生成内容"
 }

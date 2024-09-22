@@ -8,6 +8,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { CommonHeaderModule } from '../common-header/common-header.module';
 import { ExploreContainerComponentModule } from '../explore-container/explore-container.module';
 import { Tab1PageRoutingModule } from '../tab1/tab1-routing.module';
+import { QRCodeModule } from 'angularx-qrcode';
 
 
 
@@ -21,6 +22,7 @@ import { Tab1PageRoutingModule } from '../tab1/tab1-routing.module';
     CommonHeaderModule,
     ExploreContainerComponentModule,
     Tab1PageRoutingModule,
+    QRCodeModule,
     // 引入国际化模块
     TranslateModule
   ]

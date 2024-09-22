@@ -5,16 +5,17 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './qrcode.component.html',
   styleUrls: ['./qrcode.component.scss'],
 })
-export class QrcodeComponent  implements OnInit {
+export class QrcodeComponent   {
 
 
   text: string = '';
+  workText: string = '';
+  imgBase64: string = ''
 
   constructor() { }
-
-  ngOnInit() {}
-  onQrClick() {
-    
+ 
+  async onQrClick() {
+    this.workText = this.text;
   }
 
 }
