@@ -5,5 +5,6 @@
     "qrcode.create": "二维码生成",
     "qrcode.content": "离线生成二维码，不记录任何生成内容",
     "qrcode.decode": "解析",
-    "decode.content": "解析内容"
+    "decode.content": "解析内容",
+    "cannot.be.parsed": "无法解析"
 }
