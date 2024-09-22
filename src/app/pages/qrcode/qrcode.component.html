@@ -1,0 +1,19 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Tab 1
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <app-common-header [title]="'test' | translate"></app-common-header>
+
+  <ion-item>
+    <ion-input [(ngModel)]="text"></ion-input>
+    <ion-button style="min-width: fit-content;" (click)="onQrClick()">{{ 'qrcode.translate' | translate }}</ion-button>
+  </ion-item>
+  
+
+
+</ion-content>

@@ -3,7 +3,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: 'home',
+    path: 'home1',
     loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
   },
   {
@@ -15,8 +15,16 @@ const routes: Routes = [
     loadChildren: () => import('./pages/person/person.module').then(m => m.PersonModule),
   },
   {
+    path: 'home',
+    loadChildren: () => import('./pages/tabs/tabs.module').then(m => m.TabsPageModule)
+  },
+  {
+    path: 'qrcode',
+    loadChildren: () => import('./pages/qrcode/qrcode.module').then(m => m.QrcodeModule)
+  },
+  {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'home/tabs/tab1',
     pathMatch: 'full'
   },
 ];
