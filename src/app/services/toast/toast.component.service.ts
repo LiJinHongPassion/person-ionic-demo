@@ -12,7 +12,6 @@ export class ToastComponent {
 
   async showError(msgI18nKey: string, time = 3000){
     const msg: any = await this.i18n.get(msgI18nKey)
-    console.log('国际化', msg, msgI18nKey)
     const toast = await this.toastController.create({
         message: 'error: ' + msg,
         duration: time,
