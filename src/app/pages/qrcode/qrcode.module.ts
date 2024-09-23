@@ -9,11 +9,12 @@ import { CommonHeaderModule } from '../common-header/common-header.module';
 import { ExploreContainerComponentModule } from '../explore-container/explore-container.module';
 import { Tab1PageRoutingModule } from '../tab1/tab1-routing.module';
 import { QRCodeModule } from 'angularx-qrcode';
+import { UsersComponent } from './users/users.component';
 
 
 
 @NgModule({
-  declarations: [QrcodeComponent],
+  declarations: [QrcodeComponent, UsersComponent],
   imports: [
     CommonModule,
     QrcodeRoutingModule,

@@ -13,6 +13,12 @@ export class Tab1Page {
       titleId: 'qrcode.create',
       contentId: 'qrcode.content',
       routerLink: "/qrcode"
+    },
+    {
+      img: 'https://ionicframework.com/docs/img/demos/card-media.png',
+      titleId: 'qrcode.create',
+      contentId: 'qrcode.content',
+      routerLink: "/qrcode/user"
     }
   ]
 
