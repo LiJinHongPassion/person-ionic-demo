@@ -31,6 +31,10 @@
   <ion-item [style]="{display: action  === 'decode' ? 'block' : 'none'}">
     <canvas #qrCanvas id="qrCanvas" [width]="canvasWidth" [height]="canvasHeight"></canvas>
   </ion-item>
+  <!-- <ion-item [style]="{display: action  === 'decode' ? 'block' : 'none'}">
+    <ion-input [(ngModel)]="decodeImgSrc" [readonly]="true"></ion-input>
+    <ion-button style="min-width: fit-content;" (click)="onDeleteClick()">{{ 'delete.file' | translate }}</ion-button>
+  </ion-item> -->
 
 
 </ion-content>

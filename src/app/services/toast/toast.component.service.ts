@@ -21,4 +21,14 @@ export class ToastComponent {
       await toast.present();
   }
 
+  async showInfo(msgI18nKey: string, time = 3000){
+    const msg: any = await this.i18n.get(msgI18nKey)
+    const toast = await this.toastController.create({
+        message: msg,
+        duration: time,
+        position: 'bottom',
+      });
+  
+      await toast.present();
+  }
 }

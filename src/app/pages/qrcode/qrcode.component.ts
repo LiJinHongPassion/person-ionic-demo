@@ -1,5 +1,6 @@
 import { Component, ElementRef, OnInit } from '@angular/core';
 import { Camera, CameraResultType } from '@capacitor/camera';
+import { Directory, Filesystem } from '@capacitor/filesystem';
 import { ToastController } from '@ionic/angular';
 import QR from 'jsqr';
 import { ToastComponent } from 'src/app/services/toast/toast.component.service';
@@ -15,7 +16,7 @@ export class QrcodeComponent   {
 
   text: string = '';
   workText: string = '';
-  decodeImgSrc: string | undefined = ''
+  decodeImgSrc: any = ''
   decodeText: string = ''
   canvasWidth = 300
   canvasHeight = 400
@@ -35,6 +36,7 @@ export class QrcodeComponent   {
 
   private async takePicture(){
     this.decodeText = ''
+    this.decodeImgSrc = ''
     const image = await Camera.pickImages({
       quality: 90,
       limit: 1
@@ -47,7 +49,7 @@ export class QrcodeComponent   {
     const imageUrl: any = image.photos[0].webPath;
 
     // Can be set to the src of an image now
-    this.decodeImgSrc = imageUrl;
+    this.decodeImgSrc = image.photos[0].path;
 
     let canvas: any = document.getElementById('qrCanvas');
 
@@ -76,6 +78,13 @@ export class QrcodeComponent   {
     }
   };
   
+  async onDeleteClick() {
+    await Filesystem.deleteFile({
+      path: this.decodeImgSrc,
+      // directory: Directory.Documents,
+    });
+    this.toastService.showInfo('success')
+  }
 
 }
 
