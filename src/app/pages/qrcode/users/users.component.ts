@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Filesystem, Directory, Encoding, ReaddirResult } from '@capacitor/filesystem';
 import { of, switchMap } from 'rxjs';
 import { User } from 'src/app/services/sqlite/models/user';
 import { StorageService } from 'src/app/services/sqlite/services/storage.service';
+import { ToastComponent } from 'src/app/services/toast/toast.component.service';
 
 @Component({
   selector: 'app-users',
@@ -13,7 +15,7 @@ export class UsersComponent  implements OnInit {
   userList: User[] = []
   isWeb: any
 
-  constructor(private storage: StorageService) {}
+  constructor(private storage: StorageService,private toastService: ToastComponent) {}
 
   ngOnInit() {
     try {
@@ -46,5 +48,31 @@ export class UsersComponent  implements OnInit {
 
   deleteUser(user: User) {
     this.storage.deleteUserById(user.id.toString())
+  }
+
+
+
+  async writeSecretFile(){
+    const randomNum = Math.random();
+    const urlResp = await Filesystem.writeFile({
+      path: 'ljh/text' + randomNum + '.txt',
+      data: 'This is a test',
+      directory: Directory.Documents,
+      encoding: Encoding.UTF8,
+      recursive: true
+    });
+
+    this.toastService.showInfo(urlResp.uri)
+    this.readDir();
+  };
+
+
+  public files: any = []
+  async readDir(){
+    const filesResp = await Filesystem.readdir({
+      path: 'ljh',
+      directory: Directory.Documents
+    })
+    this.files = filesResp.files;
   }
 }
