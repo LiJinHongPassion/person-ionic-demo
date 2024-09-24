@@ -4,6 +4,7 @@ import { of, switchMap } from 'rxjs';
 import { User } from 'src/app/services/sqlite/models/user';
 import { StorageService } from 'src/app/services/sqlite/services/storage.service';
 import { ToastComponent } from 'src/app/services/toast/toast.component.service';
+import { FileOpener, FileOpenerOptions } from '@capacitor-community/file-opener';
 
 @Component({
   selector: 'app-users',
@@ -75,4 +76,18 @@ export class UsersComponent  implements OnInit {
     })
     this.files = filesResp.files;
   }
+
+  async openFile(filePath: any){
+
+      try {
+        const fileOpenerOptions: FileOpenerOptions = {
+          filePath: filePath, 
+          openWithDefault: true,
+        };
+        await FileOpener.open(fileOpenerOptions);
+      } catch (e) {
+        console.log('Error opening file', e);
+      }
+  }
+ 
 }

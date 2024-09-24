@@ -17,7 +17,7 @@
         <ion-icon name="add" slot="icon-only"></ion-icon>
       </ion-button>
     </ion-col>
-    <ion-col><ion-button (click)="writeSecretFile()">写文件</ion-button></ion-col>
+    <ion-col><ion-button (click)="writeSecretFile()">写文件</ion-button></ion-col> 
   </ion-row>
 
   <ion-item *ngFor="let user of userList">
@@ -36,8 +36,8 @@
       <ion-icon name="trash" slot="icon-only"></ion-icon>
     </ion-button>
   </ion-item>
-  
+
   <ion-item *ngFor="let file of files">
-    <div>{{file.name}}</div>
+    <div (click)="openFile(file.uri)">{{file.name}}</div>
   </ion-item>
   </ion-content>
