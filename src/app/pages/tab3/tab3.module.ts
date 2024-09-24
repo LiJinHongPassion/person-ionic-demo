@@ -7,6 +7,7 @@ import { ExploreContainerComponentModule } from '../explore-container/explore-co
 
 import { Tab3PageRoutingModule } from './tab3-routing.module';
 import { CommonHeaderModule } from '../common-header/common-header.module';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
@@ -15,7 +16,9 @@ import { CommonHeaderModule } from '../common-header/common-header.module';
     FormsModule,
     CommonHeaderModule,
     ExploreContainerComponentModule,
-    Tab3PageRoutingModule
+    Tab3PageRoutingModule,
+    // 引入国际化模块
+    TranslateModule
   ],
   declarations: [Tab3Page]
 })

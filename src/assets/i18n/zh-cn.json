@@ -8,5 +8,6 @@
     "decode.content": "解析内容",
     "cannot.be.parsed": "无法解析",
     "delete.file": "删除文件",
-    "success": "成功"
+    "success": "成功",
+    "my": "我的"
 }

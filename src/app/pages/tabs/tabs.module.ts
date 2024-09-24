@@ -7,6 +7,7 @@ import { TabsPageRoutingModule } from './tabs-routing.module';
 
 import { TabsPage } from './tabs.page';
 import { CommonHeaderModule } from '../common-header/common-header.module';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
@@ -14,7 +15,9 @@ import { CommonHeaderModule } from '../common-header/common-header.module';
     CommonModule,
     FormsModule,
     CommonHeaderModule,
-    TabsPageRoutingModule
+    TabsPageRoutingModule,
+    // 引入国际化模块
+    TranslateModule
   ],
   declarations: [TabsPage]
 })
