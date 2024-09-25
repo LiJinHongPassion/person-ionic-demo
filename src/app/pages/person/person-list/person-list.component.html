@@ -1,8 +1,14 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
+    <ion-title  slot="start">
       {{'person.mgmt' | translate}}
     </ion-title>
+
+    <ion-buttons slot="end">
+      <ion-button [routerLink]="['/person/edit']" >
+        <ion-icon slot="icon-only" ios="person-add" md="person-add" ></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -11,15 +17,36 @@
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
   
-  <ion-header collapse="condense">
+  <!-- <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">
+      <ion-title  slot="start">
         {{'person.mgmt' | translate}}
       </ion-title>
+
+      <ion-buttons slot="end">
+        <ion-button>
+          <ion-icon slot="icon-only" ios="person-add" md="person-add"></ion-icon>
+        </ion-button>
+      </ion-buttons>
     </ion-toolbar>
-  </ion-header>
+  </ion-header> -->
   
   <ion-list>
+
+    <ion-item>
+      <!-- <ion-input
+        [appDropdown]="options"
+        (optionSelected)="onOptionSelected($event)"
+        label="Input with clear button"
+        labelPlacement="stacked"
+        [clearInput]="true"
+        placeholder="Enter text to see clear button"
+        value="Default value"
+        autocomplete="name"
+      >
+      </ion-input> -->
+    </ion-item>
+
     <ion-item-sliding *ngFor="let user of userList">
       <ion-item>
         <ion-label>{{user.name}}</ion-label>

@@ -1,17 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { Filesystem, Directory, Encoding, ReaddirResult } from '@capacitor/filesystem';
-import { of, switchMap } from 'rxjs';
+import { Filesystem, Directory, Encoding } from '@capacitor/filesystem';
+import { Share } from '@capacitor/share';
+import { switchMap, of } from 'rxjs';
 import { User } from 'src/app/services/sqlite/models/user';
 import { StorageService } from 'src/app/services/sqlite/services/storage.service';
 import { ToastComponent } from 'src/app/services/toast/toast.component.service';
-import { Share } from '@capacitor/share';
 
 @Component({
-  selector: 'app-users',
-  templateUrl: './users.component.html',
-  styleUrls: ['./users.component.scss'],
+  selector: 'app-person-edit',
+  templateUrl: './person-edit.component.html',
+  styleUrls: ['./person-edit.component.scss'],
 })
-export class UsersComponent  implements OnInit {
+export class PersonEditComponent  implements OnInit {
   newUserName = ''
   userList: User[] = []
   isWeb: any

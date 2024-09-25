@@ -1,3 +1,20 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+
+    <ion-button slot="start" [routerLink]="['/person']" >
+      <ion-icon slot="icon-only" ios="chevron-back" md="chevron-back" ></ion-icon>
+    </ion-button>
+    <ion-title >
+    </ion-title>
+
+    <ion-buttons slot="end">
+      <ion-button [routerLink]="['/person/edit']" >
+        <ion-icon slot="icon-only" ios="refresh-circle" md="refresh-circle" ></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
 <ion-content>
 
   <ion-row>
