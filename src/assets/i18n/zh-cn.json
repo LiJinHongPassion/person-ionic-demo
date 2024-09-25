@@ -9,5 +9,10 @@
     "cannot.be.parsed": "无法解析",
     "delete.file": "删除文件",
     "success": "成功",
-    "my": "我的"
+    "my": "我的",
+    "person.mgmt": "人员管理",
+    "event.mgmt": "事件管理",
+    "relation.mgmt": "关系管理",
+    "group.mgmt": "圈子管理",
+    "data.mgmt": "数据管理"
 }

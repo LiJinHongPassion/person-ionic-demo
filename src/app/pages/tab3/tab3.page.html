@@ -13,5 +13,12 @@
     </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Tab 3 page"></app-explore-container>
+ 
+    <ion-list [inset]="true">
+      <ion-item [button]="true" [routerLink]="[item.routerLink]" routerLinkActive="router-link-active"  *ngFor="let item of list">
+        <ion-icon [color]="item.color" slot="start" [name]="item.iconName" size="large"></ion-icon>
+        <ion-label>{{ item.labelId | translate}}</ion-label>
+      </ion-item>
+    </ion-list>
+  
 </ion-content>
