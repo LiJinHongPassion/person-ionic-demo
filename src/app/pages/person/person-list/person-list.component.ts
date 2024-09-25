@@ -9,6 +9,14 @@ import { DataService, Message } from 'src/app/services/data.service';
 })
 export class PersonListComponent   {
 
+  userList = [
+    {
+      name: '',
+      sex: ''
+    }
+  ]
+
+
   private data = inject(DataService);
   constructor() { }
 
