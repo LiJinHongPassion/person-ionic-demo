@@ -32,21 +32,6 @@
   </ion-header> -->
   
   <ion-list>
-
-    <ion-item>
-      <!-- <ion-input
-        [appDropdown]="options"
-        (optionSelected)="onOptionSelected($event)"
-        label="Input with clear button"
-        labelPlacement="stacked"
-        [clearInput]="true"
-        placeholder="Enter text to see clear button"
-        value="Default value"
-        autocomplete="name"
-      >
-      </ion-input> -->
-    </ion-item>
-
     <ion-item-sliding *ngFor="let user of userList">
       <ion-item-options side="start"> 
         <ion-item-option color="danger">
@@ -58,7 +43,7 @@
           <ion-row>
             <ion-col style="display: flex; align-items: center">
               <ion-icon size="large"
-                [name]="user.gender === 1 ? 'boy' : 'girl'"></ion-icon>
+                [name]="user.gender === '1' ? 'boy' : 'girl'"></ion-icon>
                 <ion-label>{{user.nickname || user.name}}<span *ngIf="user.birthday"> / {{ user.birthday | age }}</span></ion-label>
             </ion-col>
             <ion-col style="text-align: right;">

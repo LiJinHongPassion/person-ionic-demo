@@ -15,7 +15,7 @@ export class PersonListComponent   {
       id: 0,
       name: '王明',
       nickname: '小王',
-      gender: 0,
+      gender: '1',
       field: '',
       type: '',
       profession: '医生,护士',

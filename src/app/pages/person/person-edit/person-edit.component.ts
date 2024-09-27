@@ -12,6 +12,23 @@ import { ToastComponent } from 'src/app/services/toast/toast.component.service';
   styleUrls: ['./person-edit.component.scss'],
 })
 export class PersonEditComponent  implements OnInit {
+
+  user: User = {
+    id: 0,
+    name: '11',
+    nickname: '111',
+    gender: '1',
+    field: '111',
+    type: '111',
+    profession: '111',
+    birthday: '111',
+    hobbies: '111',
+    education: '111',
+    phone: '111',
+    value_degree: 1
+  }
+
+
   newUserName = ''
   userList: User[] = []
   isWeb: any

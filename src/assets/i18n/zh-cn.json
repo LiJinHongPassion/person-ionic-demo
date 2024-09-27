@@ -17,5 +17,10 @@
     "data.mgmt": "数据管理",
     "high": "高",
     "middle": "中",
-    "low": "低"
+    "low": "低",
+    "user.sex": "性别",
+    "boy": "男",
+    "girl": "女",
+    "user.name": "名字",
+    "user.nickname": "昵称"
 }

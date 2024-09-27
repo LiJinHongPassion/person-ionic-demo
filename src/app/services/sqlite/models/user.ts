@@ -2,7 +2,7 @@ export interface User {
   id: number
   name: string
   nickname: string
-  gender: 0 | 1
+  gender: '1' | '0'
   field: string // 逗号分隔
   type: string
   profession: string
