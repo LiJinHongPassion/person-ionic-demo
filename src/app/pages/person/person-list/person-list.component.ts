@@ -18,9 +18,9 @@ export class PersonListComponent   {
       gender: 0,
       field: '',
       type: '',
-      profession: 0,
-      birthday: '',
-      hobbies: '',
+      profession: '医生,护士',
+      birthday: '2000-01-01',
+      hobbies: '汽车,怕是,dsadasdas,dadqwdqdsd,qd,q,,qq,q,q,q,q,q,q,qewqa,s',
       education: '',
       phone: '',
       value_degree: 1

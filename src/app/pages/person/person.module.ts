@@ -8,6 +8,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { PersonEditComponent } from './person-edit/person-edit.component';
 import { TagModule } from 'src/app/component/tag/tag.module';
 import { WorthModule } from 'src/app/component/pipe/worth/worth.module';
+import { AgeModule } from 'src/app/component/pipe/age/age.module';
 
 const declaraions: any = [
   PersonListComponent,
@@ -23,7 +24,8 @@ const declaraions: any = [
     // 引入国际化模块
     TranslateModule, 
     TagModule,
-    WorthModule
+    WorthModule,
+    AgeModule
 ],
   declarations: [...declaraions],
   providers: []
