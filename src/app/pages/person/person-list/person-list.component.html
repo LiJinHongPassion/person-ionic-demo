@@ -51,8 +51,8 @@
       <ion-item>
        
         <div style="width: 80px; height: 80px">
-          <ion-icon class="header" size="large" 
-            [src]="user.gender === 1 ? './assets/icon/boy.svg' : './assets/icon/girl.svg'"></ion-icon>
+            <ion-icon class="header" 
+              [name]="user.gender === 1 ? 'boy' : 'girl'"></ion-icon>
         </div>
         <ion-label>{{user.nickname || user.name}}</ion-label>
         <app-tag label="{{user.value_degree | worth | async}}"></app-tag>
