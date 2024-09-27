@@ -6,6 +6,8 @@ import { IonicModule } from '@ionic/angular';
 import { PersonRoutingModule } from './person-routing.module';
 import { TranslateModule } from '@ngx-translate/core';
 import { PersonEditComponent } from './person-edit/person-edit.component';
+import { TagModule } from 'src/app/component/tag/tag.module';
+import { WorthModule } from 'src/app/component/pipe/worth/worth.module';
 
 const declaraions: any = [
   PersonListComponent,
@@ -19,8 +21,11 @@ const declaraions: any = [
     IonicModule,
     PersonRoutingModule,
     // 引入国际化模块
-    TranslateModule
-  ],
+    TranslateModule, 
+    TagModule,
+    WorthModule
+],
   declarations: [...declaraions],
+  providers: []
 })
 export class PersonModule { }

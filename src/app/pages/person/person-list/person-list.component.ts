@@ -1,6 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { RefresherCustomEvent } from '@ionic/angular';
 import { DataService, Message } from 'src/app/services/data.service';
+import { User } from 'src/app/services/sqlite/models/user';
 
 @Component({
   selector: 'app-person-list',
@@ -9,10 +10,20 @@ import { DataService, Message } from 'src/app/services/data.service';
 })
 export class PersonListComponent   {
 
-  userList = [
+  userList: User[] = [
     {
-      name: '',
-      sex: ''
+      id: 0,
+      name: '王明',
+      nickname: '小王',
+      gender: 0,
+      field: '',
+      type: '',
+      profession: 0,
+      birthday: '',
+      hobbies: '',
+      education: '',
+      phone: '',
+      value_degree: 1
     }
   ]
 

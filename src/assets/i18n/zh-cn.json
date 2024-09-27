@@ -14,5 +14,8 @@
     "event.mgmt": "事件管理",
     "relation.mgmt": "关系管理",
     "group.mgmt": "圈子管理",
-    "data.mgmt": "数据管理"
+    "data.mgmt": "数据管理",
+    "high": "高",
+    "middle": "中",
+    "low": "低"
 }
