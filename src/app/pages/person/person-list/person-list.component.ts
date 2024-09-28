@@ -23,7 +23,7 @@ export class PersonListComponent   {
       hobbies: '汽车,怕是,dsadasdas,dadqwdqdsd,qd,q,,qq,q,q,q,q,q,q,qewqa,s',
       education: '',
       phone: '',
-      value_degree: 1
+      value_degree: '1'
     }
   ]
 

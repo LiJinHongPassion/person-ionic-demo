@@ -18,34 +18,129 @@
 <ion-content>
 
   <ion-list>
-    <ion-item>
-      <ion-input label="{{'user.name' | translate}}" [(ngModel)]="user.name"></ion-input>
-    </ion-item> 
-    <ion-item>
-      <ion-input label="{{'user.nickname' | translate}}" [(ngModel)]="user.nickname"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-select interface="popover" label="{{'user.sex' | translate}}" [(ngModel)]="user.gender" >
-        <ion-select-option value="1">{{'boy' | translate}}</ion-select-option>
-        <ion-select-option value="0">{{'girl' | translate}}</ion-select-option>
-      </ion-select>
-    </ion-item>
-    <ion-item>
-      <app-tag-list [tags]="user.hobbiesArr"></app-tag-list>
-    </ion-item>
-    <!-- 学历 -->
-    <ion-item>
-      <ion-select interface="popover" label="{{'user.education' | translate}}" [(ngModel)]="user.education" >
-        <ion-select-option value="0">{{'doctor' | translate}}</ion-select-option>
-        <ion-select-option value="1">{{'master' | translate}}</ion-select-option>
-        <ion-select-option value="2">{{'junior.college' | translate}}</ion-select-option>
-        <ion-select-option value="3">{{'secondary.school' | translate}}</ion-select-option>
-        <ion-select-option value="9">{{'other' | translate}}</ion-select-option>
-      </ion-select>
-    </ion-item>
-  </ion-list>
 
-  <ion-row>
+    <ion-row>
+      <ion-col size="12">
+        <ion-item>
+          <ion-input label="{{'user.name' | translate}}" [(ngModel)]="user.name"></ion-input>
+        </ion-item> 
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="12">
+        <ion-item>
+          <ion-input label="{{'user.nickname' | translate}}" [(ngModel)]="user.nickname"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="12">
+        <ion-item>
+          <ion-select interface="popover" label="{{'user.sex' | translate}}" [(ngModel)]="user.gender" >
+            <ion-select-option value="1">{{'boy' | translate}}</ion-select-option>
+            <ion-select-option value="0">{{'girl' | translate}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col style="padding-left: 0 !important;" size="9">
+        <ion-item>
+          <ion-input label="{{'user.filed' | translate}}" [(ngModel)]="tempFiled"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col size="3"> 
+          <ion-button
+          (click)="addFiled()" expand="block" fill="outline">
+            <ion-icon name="add" slot="icon-only"></ion-icon>
+          </ion-button> 
+      </ion-col>
+      <ion-col size="12">
+        <app-tag-list [tags]="user.filedArr"></app-tag-list>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col style="padding-left: 0 !important;" size="9">
+        <ion-item>
+          <ion-input label="{{'user.profession' | translate}}" [(ngModel)]="tempProfession"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col size="3"> 
+          <ion-button
+          (click)="addProfession()" expand="block" fill="outline">
+            <ion-icon name="add" slot="icon-only"></ion-icon>
+          </ion-button> 
+      </ion-col>
+      <ion-col size="12">
+        <app-tag-list [tags]="user.professionArr"></app-tag-list>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col style="padding-left: 0 !important;" size="9">
+        <ion-item>
+          <ion-input label="{{'user.hobbies' | translate}}" [(ngModel)]="tempHobbies"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col size="3"> 
+          <ion-button
+          (click)="addHobbies()" expand="block" fill="outline">
+            <ion-icon name="add" slot="icon-only"></ion-icon>
+          </ion-button> 
+      </ion-col>
+      <ion-col size="12">
+        <app-tag-list [tags]="user.hobbiesArr"></app-tag-list>
+      </ion-col>
+    </ion-row>
+
+    <!-- 生日 -->
+    <ion-row>
+      <ion-col size="12">
+        <ion-item>
+          <ion-label>{{'user.birthday' | translate}}</ion-label>
+          <ion-datetime-button datetime="datetime"></ion-datetime-button>
+          <!-- <ion-datetime presentation="date" value="2000-01-01"></ion-datetime> -->
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <!-- 学历 -->
+    <ion-row>
+      <ion-col size="12">
+        <ion-item>
+          <ion-select interface="popover" label="{{'user.education' | translate}}" [(ngModel)]="user.education" >
+            <ion-select-option value="0">{{'doctor' | translate}}</ion-select-option>
+            <ion-select-option value="1">{{'master' | translate}}</ion-select-option>
+            <ion-select-option value="2">{{'junior.college' | translate}}</ion-select-option>
+            <ion-select-option value="3">{{'secondary.school' | translate}}</ion-select-option>
+            <ion-select-option value="9">{{'other' | translate}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <!-- 价值程度 -->
+    <ion-row>
+      <ion-col size="12">
+        <ion-item>
+          <ion-select interface="popover" label="{{'user.worth' | translate}}" [(ngModel)]="user.value_degree" >
+            <ion-select-option value="0">{{'high' | translate}}</ion-select-option>
+            <ion-select-option value="1">{{'middle' | translate}}</ion-select-option>
+            <ion-select-option value="2">{{'low' | translate}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-list>
+  <ion-modal [keepContentsMounted]="true">
+    <ng-template>
+      <ion-datetime presentation="date" id="datetime"></ion-datetime>
+    </ng-template>
+  </ion-modal>
+
+
+
+
+  <!-- <ion-row>
     <ion-col size="9">
       <ion-item>
         <ion-input
@@ -80,4 +175,4 @@
   <ion-item *ngFor="let file of files">
     <div (click)="openFile(file.uri)">{{file.name}}</div>
   </ion-item>
-  </ion-content>
+  </ion-content> -->

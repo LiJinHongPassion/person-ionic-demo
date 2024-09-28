@@ -10,7 +10,7 @@ export interface User {
   hobbies: string
   education: string
   phone: string
-  value_degree: 1 | 2 | 3
+  value_degree: '1' | '2' | '3'
   /* for version 2
   email: string
   */

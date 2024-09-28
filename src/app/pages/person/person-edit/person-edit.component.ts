@@ -13,21 +13,46 @@ import { ToastComponent } from 'src/app/services/toast/toast.component.service';
 })
 export class PersonEditComponent  implements OnInit {
 
-  user = {
+  user: any = {
     id: 0,
     name: '11',
     nickname: '111',
     gender: '1',
-    field: '111',
+    filedArr: [],
     type: '111',
-    profession: '111',
+    professionArr: [],
     birthday: '111',
     hobbiesArr: ['爬山','游泳'],
     education: '111',
     phone: '111',
-    value_degree: 1
+    value_degree: '1'
   }
 
+  tempFiled = '';
+  tempHobbies = '';
+  tempProfession = '';
+
+  addHobbies(){
+    if(!this.tempHobbies){
+      return;
+    }
+    this.user.hobbiesArr.push(this.tempHobbies);
+    this.tempHobbies = ''
+  }
+  addFiled(){
+    if(!this.tempFiled){
+      return;
+    }
+    this.user.filedArr.push(this.tempFiled);
+    this.tempFiled = ''
+  }
+  addProfession(){
+    if(!this.tempProfession){
+      return;
+    }
+    this.user.professionArr.push(this.tempProfession);
+    this.tempProfession = ''
+  }
 
   newUserName = ''
   userList: User[] = []

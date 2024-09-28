@@ -15,11 +15,21 @@ export class TagComponent  {
 
   getRandomPrettyColor() {
     const colors = ['#f3e794', '#e0e4f7', '#e795c9', '#d3f4ba', '#b7e2f5', '#fbd8b3', '#b1e4f5'];
-    const randomIndex = Math.floor(Math.random() * colors.length);
+    const randomIndex = this.hashCode(this.label) % (colors.length + 1);
     return colors[randomIndex];
   }
   onClearClick() {
     this.clearTagClick.emit();
+  }
+   hashCode(str: string) {
+    let hash = 0;
+    if (str.length === 0) return hash;
+    for (let i = 0; i < str.length; i++) {
+      const char = str.charCodeAt(i);
+      hash = ((hash << 5) - hash) + char;
+      hash = hash & hash; // 32位算法
+    }
+    return hash;
   }
 
 }
