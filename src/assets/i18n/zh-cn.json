@@ -22,5 +22,12 @@
     "boy": "男",
     "girl": "女",
     "user.name": "名字",
-    "user.nickname": "昵称"
+    "user.nickname": "昵称",
+    "user.education": "学历",
+    "doctor": "博士",
+    "master": "硕士",
+    "junior.college": "大专",
+    "secondary.school": "中专",
+    "other": "其他"
+    
 }
