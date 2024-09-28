@@ -30,6 +30,9 @@
         <ion-select-option value="0">{{'girl' | translate}}</ion-select-option>
       </ion-select>
     </ion-item>
+    <ion-item>
+      <app-tag-list [tags]="user.hobbiesArr"></app-tag-list>
+    </ion-item>
     <!-- 学历 -->
     <ion-item>
       <ion-select interface="popover" label="{{'user.education' | translate}}" [(ngModel)]="user.education" >

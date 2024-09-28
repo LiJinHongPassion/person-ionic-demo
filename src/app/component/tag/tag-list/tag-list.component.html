@@ -1,0 +1,5 @@
+<app-tag *ngFor="let item of tags;let i = index" 
+  [label]="item" 
+  [clear]="clear" 
+  (clearTagClick)="removeTag(i)">
+</app-tag>

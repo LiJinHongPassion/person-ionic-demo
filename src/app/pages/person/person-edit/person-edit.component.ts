@@ -13,7 +13,7 @@ import { ToastComponent } from 'src/app/services/toast/toast.component.service';
 })
 export class PersonEditComponent  implements OnInit {
 
-  user: User = {
+  user = {
     id: 0,
     name: '11',
     nickname: '111',
@@ -22,7 +22,7 @@ export class PersonEditComponent  implements OnInit {
     type: '111',
     profession: '111',
     birthday: '111',
-    hobbies: '111',
+    hobbiesArr: ['爬山','游泳'],
     education: '111',
     phone: '111',
     value_degree: 1
