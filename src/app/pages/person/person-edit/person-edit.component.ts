@@ -15,16 +15,16 @@ export class PersonEditComponent  implements OnInit {
 
   user: any = {
     id: 0,
-    name: '11',
-    nickname: '111',
+    name: '',
+    nickname: '',
     gender: '1',
     filedArr: [],
-    type: '111',
+    type: '',
     professionArr: [],
-    birthday: '111',
-    hobbiesArr: ['爬山','游泳'],
-    education: '111',
-    phone: '111',
+    birthday: '1998-01-01',
+    hobbiesArr: [],
+    education: '2',
+    phone: '',
     value_degree: '1'
   }
 
