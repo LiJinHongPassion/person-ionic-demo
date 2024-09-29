@@ -11,7 +11,21 @@ export interface User {
   education: string
   phone: string
   value_degree: '1' | '2' | '3'
-  /* for version 2
-  email: string
-  */
+}
+export function toEntityUser(addUser: any){
+
+  const user = {
+    name: addUser.name,
+    nickname: addUser.nickname,
+    gender: addUser.gender,
+    field: addUser.filedArr.join(','),
+    type: "",
+    profession: addUser.professionArr.join(','),
+    birthday: addUser.birthday,
+    hobbies: addUser.hobbiesArr.join(','),
+    education: addUser.education,
+    phone: addUser.phone,
+    value_degree: addUser.value_degree
+  };
+  return user;
 }

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Filesystem, Directory, Encoding } from '@capacitor/filesystem';
 import { Share } from '@capacitor/share';
 import { switchMap, of } from 'rxjs';
-import { User } from 'src/app/services/sqlite/models/user';
+import { toEntityUser, User } from 'src/app/services/sqlite/models/user';
 import { StorageService } from 'src/app/services/sqlite/services/storage.service';
 import { ToastComponent } from 'src/app/services/toast/toast.component.service';
 
@@ -11,7 +11,8 @@ import { ToastComponent } from 'src/app/services/toast/toast.component.service';
   templateUrl: './person-edit.component.html',
   styleUrls: ['./person-edit.component.scss'],
 })
-export class PersonEditComponent  implements OnInit {
+export class PersonEditComponent {
+
 
   user: any = {
     id: 0,
@@ -21,11 +22,11 @@ export class PersonEditComponent  implements OnInit {
     filedArr: [],
     type: '',
     professionArr: [],
-    birthday: '1998-01-01',
+    birthday: '',
     hobbiesArr: [],
-    education: '2',
+    education: '',
     phone: '',
-    value_degree: '1'
+    value_degree: ''
   }
 
   tempFiled = '';
@@ -54,35 +55,17 @@ export class PersonEditComponent  implements OnInit {
     this.tempProfession = ''
   }
 
-  newUserName = ''
+  async submit() {
+    const saveUser = toEntityUser(this.user);
+    console.log(saveUser)
+    await this.storage.addUser(saveUser)
+  }
+ 
   userList: User[] = []
   isWeb: any
 
   constructor(private storage: StorageService,private toastService: ToastComponent) {}
-
-  ngOnInit() {
-    try {
-      this.storage.userState().pipe(
-        switchMap(res => {
-          if (res) {
-            return this.storage.fetchUsers();
-          } else {
-            return of([]); // Return an empty array when res is false
-          }
-        })
-      ).subscribe(data => {
-        this.userList = data; // Update the user list when the data changes
-      });
-
-    } catch(err) {
-      throw new Error(`Error: ${err}`);
-    }
-  }
-  async createUser() {
-    await this.storage.addUser(this.newUserName)
-    this.newUserName = ''
-    console.log(this.userList, '#users')
-  }
+ 
 
   updateUser(user: User) { 
     this.storage.updateUserById(user.id.toString(), 1)

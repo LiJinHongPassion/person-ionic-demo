@@ -2,9 +2,9 @@ import { SQLiteDBConnection } from '@capacitor-community/sqlite';
 import { Injectable} from '@angular/core';
 import { SQLiteService } from './sqlite.service';
 import { DbnameVersionService } from './dbname-version.service';
-import { UserUpgradeStatements } from '../upgrades/user.upgrade.statements';
 import { User } from '../models/user';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { UserUpgradeStatements } from '../upgrades/user.upgrade.statements';
 
 @Injectable()
 export class StorageService {
@@ -23,6 +23,7 @@ export class StorageService {
     this.loadToVersion = this.versionUpgrades[this.versionUpgrades.length-1].toVersion;
   }
   async initializeDatabase(dbName: string) {
+    console.log(this.loadToVersion, this.versionUpgrades[this.versionUpgrades.length-1])
     this.databaseName = dbName;
     // create upgrade statements
     await this.sqliteService
@@ -47,6 +48,7 @@ export class StorageService {
   }
 
   async loadUsers() {
+    // await this.db.run('DROP TABLE IF EXISTS users;')
     const users: User[]= (await this.db.query('SELECT * FROM users;')).values as User[];
     this.userList.next(users);
   }
@@ -54,9 +56,33 @@ export class StorageService {
     await this.loadUsers();
     this.isUserReady.next(true);
   }
-  async addUser(name: string) {
-    const sql = `INSERT INTO users (name) VALUES (?);`;
-    await this.db.run(sql,[name]);
+  async addUser(user: any) {
+    const sql = `INSERT INTO users (
+                              name,
+                              nickname,
+                              gender,
+                              field,
+                              type,
+                              profession,
+                              birthday,
+                              hobbies,
+                              education,
+                              phone,
+                              value_degree
+                            ) VALUES (?,?,?,?,?,?,?,?,?,?,?);`;
+    await this.db.run(sql,[
+      user.name,
+      user.nickname,
+      user.gender,
+      user.field,
+      user.type,
+      user.profession,
+      user.birthday,
+      user.hobbies,
+      user.education,
+      user.phone,
+      user.value_degree
+    ]);
     await this.getUsers();
   }
 

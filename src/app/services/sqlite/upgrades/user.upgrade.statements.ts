@@ -1,31 +1,21 @@
 export class UserUpgradeStatements {
   userUpgrades = [
     {
-      toVersion: 1,
-      statements: [
-        `CREATE TABLE IF NOT EXISTS users(
-          id INTEGER PRIMARY KEY AUTOINCREMENT,
-          name TEXT NOT NULL,
-          active INTEGER DEFAULT 1
-        );`
-      ]
-    },
-    {
-      toVersion: 1,
+      toVersion: 4,
       statements: [
         `CREATE TABLE IF NOT EXISTS users(
           id INTEGER PRIMARY KEY AUTOINCREMENT,
           name TEXT NOT NULL,
           nickname TEXT,
-          gender INTEGER CHECK(gender BETWEEN 0 AND 1),
+          gender TEXT,
           field TEXT,
           type TEXT,
           profession TEXT,
           birthday TEXT,
           hobbies TEXT,
-          education INTEGER,
+          education TEXT,
           phone TEXT,
-          value_degree INTEGER CHECK(value_degree BETWEEN 1 AND 10)
+          value_degree TEXT
         );`
       ]
     }, 
