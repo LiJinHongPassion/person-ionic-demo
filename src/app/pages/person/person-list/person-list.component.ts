@@ -1,5 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { RefresherCustomEvent } from '@ionic/angular';
+import { ModalController, RefresherCustomEvent } from '@ionic/angular';
 import { of, switchMap } from 'rxjs';
 import { DataService, Message } from 'src/app/services/data.service';
 import { User } from 'src/app/services/sqlite/models/user';
@@ -14,7 +14,7 @@ export class PersonListComponent implements OnInit{
 
   userList: User[] = []
  
-  constructor(public storage: StorageService) { }
+  constructor(public storage: StorageService, private modal: ModalController) { }
   ngOnInit() {
     try {
       this.storage.userState().pipe(
@@ -37,5 +37,12 @@ export class PersonListComponent implements OnInit{
 
   refresh(ev: any) {
     this.storage.loadUsers();
+  }
+
+  deleteUser(id: number){
+    // this.modal.create({
+
+    // })
+    this.storage.deleteUserById(id.toString())
   }
 }

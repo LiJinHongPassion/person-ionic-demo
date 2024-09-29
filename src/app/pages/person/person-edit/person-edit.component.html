@@ -99,8 +99,18 @@
       <ion-col size="12">
         <ion-item>
           <ion-label>{{'user.birthday' | translate}}</ion-label>
-          <ion-datetime-button datetime="datetime"></ion-datetime-button>
-          <!-- <ion-datetime presentation="date" value="2000-01-01"></ion-datetime> -->
+          <ion-label>{{user.birthday | date : 'yyyy-mm-dd'}}</ion-label>
+        </ion-item>
+      </ion-col>
+      <ion-col size="7">
+        <ion-item>
+          <ion-datetime-button datetime="datetime" ></ion-datetime-button>
+          <ion-modal [keepContentsMounted]="true">
+            <ng-template>
+              <ion-datetime (ionChange)="ionBirthdayChange()" [(ngModel)]="tempBirthday" presentation="date" id="datetime"></ion-datetime>
+            </ng-template>
+          </ion-modal>
+
         </ion-item>
       </ion-col>
     </ion-row>
@@ -139,12 +149,6 @@
     </ion-col>
     </ion-row>
   </ion-list>
-  <ion-modal [keepContentsMounted]="true">
-    <ng-template>
-      <ion-datetime presentation="date" id="datetime"></ion-datetime>
-    </ng-template>
-  </ion-modal>
-
 
 
 

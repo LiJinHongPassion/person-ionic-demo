@@ -35,7 +35,7 @@
     <ion-item-sliding *ngFor="let user of userList">
       <ion-item-options side="start"> 
         <ion-item-option color="danger">
-          <ion-icon slot="icon-only" name="trash"></ion-icon>
+          <ion-icon slot="icon-only" name="trash" (click)="deleteUser(user.id)"></ion-icon>
         </ion-item-option>
       </ion-item-options>
       <ion-item>
@@ -44,7 +44,7 @@
             <ion-col style="display: flex; align-items: center">
               <ion-icon size="large"
                 [name]="user.gender === '1' ? 'boy' : 'girl'"></ion-icon>
-                <ion-label>{{user.nickname || user.name}}<span *ngIf="user.birthday"> / {{ user.birthday | age }}</span></ion-label>
+                <ion-label style="margin-left: 8px;">{{user.nickname || user.name}}<span *ngIf="user.birthday"> / {{ user.birthday | age }}</span></ion-label>
             </ion-col>
             <ion-col style="text-align: right;">
               <app-tag *ngIf="user.value_degree" label="{{user.value_degree | worth | async}}"></app-tag>

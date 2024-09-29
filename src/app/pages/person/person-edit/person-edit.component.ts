@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Filesystem, Directory, Encoding } from '@capacitor/filesystem';
 import { Share } from '@capacitor/share';
 import { switchMap, of } from 'rxjs';
@@ -28,10 +29,25 @@ export class PersonEditComponent {
     phone: '',
     value_degree: ''
   }
+  default = {
+    id: 0,
+    name: '',
+    nickname: '',
+    gender: '1',
+    filedArr: [],
+    type: '',
+    professionArr: [],
+    birthday: '',
+    hobbiesArr: [],
+    education: '',
+    phone: '',
+    value_degree: ''
+  }
 
   tempFiled = '';
   tempHobbies = '';
   tempProfession = '';
+  tempBirthday = '2000-11-02T01:22:00';
 
   addHobbies(){
     if(!this.tempHobbies){
@@ -54,17 +70,28 @@ export class PersonEditComponent {
     this.user.professionArr.push(this.tempProfession);
     this.tempProfession = ''
   }
+  ionBirthdayChange(){
+    if(!this.tempBirthday){
+      return;
+    }
+    this.user.birthday = this.tempBirthday;
+  }
 
-  async submit() {
+  submit() {
+    if(!this.user.name){
+      return; 
+    }
     const saveUser = toEntityUser(this.user);
     console.log(saveUser)
-    await this.storage.addUser(saveUser)
+    this.storage.addUser(saveUser).then(()=>{
+      this.user = this.default;
+      this.router.navigate(['/person'])
+    })
   }
- 
-  userList: User[] = []
-  isWeb: any
 
-  constructor(private storage: StorageService,private toastService: ToastComponent) {}
+
+  constructor(private storage: StorageService,private toastService: ToastComponent, public router: Router
+  ) {}
  
 
   updateUser(user: User) { 
