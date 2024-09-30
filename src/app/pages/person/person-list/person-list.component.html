@@ -41,7 +41,7 @@
       <ion-item>
         <ion-grid>
           <ion-row>
-            <ion-col style="display: flex; align-items: center">
+            <ion-col style="display: flex; align-items: center" (click)="gotoDetail(user.id)">
               <ion-icon size="large"
                 [name]="user.gender === '1' ? 'boy' : 'girl'"></ion-icon>
                 <ion-label style="margin-left: 8px;">{{user.nickname || user.name}}<span *ngIf="user.birthday"> / {{ user.birthday | age }}</span></ion-label>

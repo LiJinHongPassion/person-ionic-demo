@@ -9,10 +9,12 @@ import { PersonEditComponent } from './person-edit/person-edit.component';
 import { TagModule } from 'src/app/component/tag/tag.module';
 import { WorthModule } from 'src/app/component/pipe/worth/worth.module';
 import { AgeModule } from 'src/app/component/pipe/age/age.module';
+import { PersonDetailComponent } from './person-detail/person-detail.component';
 
 const declaraions: any = [
   PersonListComponent,
-  PersonEditComponent
+  PersonEditComponent,
+  PersonDetailComponent
 ]
 
 @NgModule({

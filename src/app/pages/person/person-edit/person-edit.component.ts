@@ -88,7 +88,9 @@ export class PersonEditComponent {
       this.router.navigate(['/person'])
     })
   }
-
+  clearUser(){
+    this.user = this.default;
+  }
 
   constructor(private storage: StorageService,private toastService: ToastComponent, public router: Router
   ) {}

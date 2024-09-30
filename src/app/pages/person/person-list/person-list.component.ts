@@ -1,4 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ModalController, RefresherCustomEvent } from '@ionic/angular';
 import { of, switchMap } from 'rxjs';
 import { DataService, Message } from 'src/app/services/data.service';
@@ -14,7 +15,11 @@ export class PersonListComponent implements OnInit{
 
   userList: User[] = []
  
-  constructor(public storage: StorageService, private modal: ModalController) { }
+  constructor(
+    public storage: StorageService, 
+    private modal: ModalController,
+    private router: Router
+  ) { }
   ngOnInit() {
     try {
       this.storage.userState().pipe(
@@ -44,5 +49,8 @@ export class PersonListComponent implements OnInit{
 
     // })
     this.storage.deleteUserById(id.toString())
+  }
+  gotoDetail(id: number){
+    this.router.navigate([`/person/detail/${id}`])
   }
 }
