@@ -43,7 +43,7 @@ export class UsersComponent  implements OnInit {
   }
 
   updateUser(user: User) { 
-    this.storage.updateUserById(user.id.toString(), 1)
+    // this.storage.updateUserById(user.id.toString(), 1)
   }
 
   deleteUser(user: User) {

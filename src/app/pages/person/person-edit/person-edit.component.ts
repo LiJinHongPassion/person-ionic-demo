@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Filesystem, Directory, Encoding } from '@capacitor/filesystem';
 import { Share } from '@capacitor/share';
 import { switchMap, of } from 'rxjs';
-import { toEntityUser, User } from 'src/app/services/sqlite/models/user';
+import { toEditUser, toEntityUser, User } from 'src/app/services/sqlite/models/user';
 import { StorageService } from 'src/app/services/sqlite/services/storage.service';
 import { ToastComponent } from 'src/app/services/toast/toast.component.service';
 
@@ -12,7 +12,7 @@ import { ToastComponent } from 'src/app/services/toast/toast.component.service';
   templateUrl: './person-edit.component.html',
   styleUrls: ['./person-edit.component.scss'],
 })
-export class PersonEditComponent {
+export class PersonEditComponent implements OnInit {
 
 
   user: any = {
@@ -20,7 +20,7 @@ export class PersonEditComponent {
     name: '',
     nickname: '',
     gender: '1',
-    filedArr: [],
+    fieldArr: [],
     type: '',
     professionArr: [],
     birthday: '',
@@ -34,7 +34,7 @@ export class PersonEditComponent {
     name: '',
     nickname: '',
     gender: '1',
-    filedArr: [],
+    fieldArr: [],
     type: '',
     professionArr: [],
     birthday: '',
@@ -44,7 +44,7 @@ export class PersonEditComponent {
     value_degree: ''
   }
 
-  tempFiled = '';
+  tempField = '';
   tempHobbies = '';
   tempProfession = '';
   tempBirthday = '2000-11-02T01:22:00';
@@ -57,11 +57,11 @@ export class PersonEditComponent {
     this.tempHobbies = ''
   }
   addFiled(){
-    if(!this.tempFiled){
+    if(!this.tempField){
       return;
     }
-    this.user.filedArr.push(this.tempFiled);
-    this.tempFiled = ''
+    this.user.fieldArr.push(this.tempField);
+    this.tempField = ''
   }
   addProfession(){
     if(!this.tempProfession){
@@ -81,10 +81,14 @@ export class PersonEditComponent {
     if(!this.user.name){
       return; 
     }
-    const saveUser = toEntityUser(this.user);
+    const isAdd = this.user.id === 0;
+    const saveUser = toEntityUser(this.user, isAdd);
     console.log(saveUser)
-    this.storage.addUser(saveUser).then(()=>{
+    isAdd && this.storage.addUser(saveUser).then(()=>{
       this.user = this.default;
+      this.router.navigate(['/person'])
+    })
+    !isAdd&& this.storage.updateUserById(this.user.id, saveUser).then(()=>{
       this.router.navigate(['/person'])
     })
   }
@@ -92,12 +96,26 @@ export class PersonEditComponent {
     this.user = this.default;
   }
 
-  constructor(private storage: StorageService,private toastService: ToastComponent, public router: Router
+  constructor(
+    private storage: StorageService,
+    private toastService: ToastComponent, 
+    public router: Router,
+    private acRouter: ActivatedRoute,
+    private storageService: StorageService
   ) {}
+  ngOnInit(): void {
+    const params: any = this.acRouter.snapshot.params;
+    const userId = params?.id;
+   
+    this.storageService.getUserById(userId).then(res=>{
+      this.user = toEditUser(res);
+      console.log(this.user)
+    })
+  }
  
 
   updateUser(user: User) { 
-    this.storage.updateUserById(user.id.toString(), 1)
+    // this.storage.updateUserById(user.id.toString(), 1)
   }
 
   deleteUser(user: User) {

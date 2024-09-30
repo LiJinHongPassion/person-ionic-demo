@@ -35,6 +35,7 @@
     "junior.college": "大专",
     "secondary.school": "中专",
     "other": "其他",
-    "confirm": "确认"
+    "confirm": "确认",
+    "back.and.retry": "返回请重试"
     
 }

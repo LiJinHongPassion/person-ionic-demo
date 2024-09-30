@@ -14,6 +14,10 @@ const routes: Routes = [
     component: PersonEditComponent
   },
   {
+    path: 'modify/:id',
+    component: PersonEditComponent
+  },
+  {
     path: 'detail/:id',
     component: PersonDetailComponent
   }

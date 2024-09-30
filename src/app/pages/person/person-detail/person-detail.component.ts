@@ -1,4 +1,8 @@
+import { query } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { StorageService } from 'src/app/services/sqlite/services/storage.service';
+import { ToastComponent } from 'src/app/services/toast/toast.component.service';
 
 @Component({
   selector: 'app-person-detail',
@@ -7,8 +11,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PersonDetailComponent  implements OnInit {
 
-  constructor() { }
+  user: any = {}
+  constructor(private acRouter: ActivatedRoute,
+    private toast: ToastComponent,
+    private storageService: StorageService
+  ) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    const params: any = this.acRouter.snapshot.params;
+    const userId = params?.id;
+    if(!userId){
+      this.toast.showError('back.and.retry')
+    }
+    this.storageService.getUserById(userId).then(res=>{
+      this.user = res;
+    })
+
+  }
 
 }

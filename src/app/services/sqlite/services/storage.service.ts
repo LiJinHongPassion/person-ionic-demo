@@ -52,6 +52,15 @@ export class StorageService {
     const users: User[]= (await this.db.query('SELECT * FROM users;')).values as User[];
     this.userList.next(users);
   }
+  async getUserById(id: number): Promise<User> { 
+    const users: User[] = (await this.db.query(`SELECT * FROM users WHERE id = ${id};`)).values as User[];
+    if(users.length === 0){
+      return new Promise(()=>{});
+    }
+    console.log('query user by id = ', id, "##", users[0])
+    return users[0];
+  }
+
   async getUsers() {
     await this.loadUsers();
     this.isUserReady.next(true);
@@ -86,8 +95,19 @@ export class StorageService {
     await this.getUsers();
   }
 
-  async updateUserById(id: string, active: number) {
-    const sql = `UPDATE users SET active=${active} WHERE id=${id}`;
+  async updateUserById(id: number, user: { name: any; nickname: any; gender: any; field: any; type: any; profession: any; birthday: any; education: any; phone: any; value_degree: any; }) {
+    const sql = `UPDATE users SET 
+    name='${user.name}',
+    nickname='${user.nickname}',
+    gender='${user.gender}',
+    field='${user.field}',
+    type='${user.type}',
+    profession='${user.profession}',
+    birthday='${user.birthday}',
+    education='${user.education}',
+    phone='${user.phone}',
+    value_degree='${user.value_degree}'
+     WHERE id=${id.toString()}`;
     await this.db.run(sql);
     await this.getUsers();
   }

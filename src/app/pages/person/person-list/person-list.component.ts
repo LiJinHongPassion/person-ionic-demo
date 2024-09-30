@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { ModalController, RefresherCustomEvent } from '@ionic/angular';
 import { of, switchMap } from 'rxjs';
 import { DataService, Message } from 'src/app/services/data.service';
+import { CommonModalService } from 'src/app/services/modal/common-modal.service';
 import { User } from 'src/app/services/sqlite/models/user';
 import { StorageService } from 'src/app/services/sqlite/services/storage.service';
 
@@ -18,6 +19,7 @@ export class PersonListComponent implements OnInit{
   constructor(
     public storage: StorageService, 
     private modal: ModalController,
+    public modalService: CommonModalService,
     private router: Router
   ) { }
   ngOnInit() {
@@ -45,12 +47,13 @@ export class PersonListComponent implements OnInit{
   }
 
   deleteUser(id: number){
-    // this.modal.create({
-
-    // })
+    this.modalService.showConfimModal()
     this.storage.deleteUserById(id.toString())
   }
   gotoDetail(id: number){
     this.router.navigate([`/person/detail/${id}`])
+  }
+  editUser(id: number){
+    this.router.navigate([`/person/modify/${id}`])
   }
 }
