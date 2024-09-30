@@ -9,6 +9,7 @@ export class TagComponent  {
 
   @Input() label: string = ''
   @Input() color: string = ''
+  @Input() icon: string = ''
   @Input() clear: boolean = false
   @Output() clearTagClick = new EventEmitter();
   constructor() { }

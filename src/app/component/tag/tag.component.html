@@ -1,4 +1,5 @@
 <span [style.backgroundColor]="color ? color : getRandomPrettyColor()" class="tag">
+  <ion-icon *ngIf="icon" [name]="icon"></ion-icon>
   {{label}}
   <ion-icon *ngIf="clear" name="close-circle" (click)="onClearClick()"></ion-icon>
 </span>

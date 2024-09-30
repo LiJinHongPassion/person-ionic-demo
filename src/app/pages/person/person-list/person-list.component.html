@@ -52,14 +52,14 @@
           </ion-row>
 
           <ion-row *ngIf="user.profession">
-            <app-tag *ngFor="let item of user.profession.split(',')" [label]="item"></app-tag>
+            <app-tag *ngFor="let item of user.profession.split(',')" [label]="item" icon="bag-remove"></app-tag>
           </ion-row>
           <!-- 领域 -->
           <!-- <ion-row *ngIf="user.field">
               <app-tag *ngFor="let item of user.field.split(',')" [label]="item"></app-tag>
           </ion-row> -->
           <ion-row *ngIf="user.hobbies">
-              <app-tag *ngFor="let item of user.hobbies.split(',')" [label]="item"></app-tag>
+              <app-tag *ngFor="let item of user.hobbies.split(',')" [label]="item" icon="heart"></app-tag>
           </ion-row>
           <ion-row *ngIf="user.hobbies">
               事件
