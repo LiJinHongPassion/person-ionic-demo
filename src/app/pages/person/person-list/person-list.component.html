@@ -34,8 +34,8 @@
   <ion-list>
     <ion-item-sliding *ngFor="let user of userList">
       <ion-item-options side="start"> 
-        <ion-item-option color="danger">
-          <ion-icon slot="icon-only" name="trash" (click)="deleteUser(user.id)"></ion-icon>
+        <ion-item-option color="danger" (click)="deleteUser(user.id)">
+          <ion-icon slot="icon-only" name="trash"></ion-icon>
         </ion-item-option>
       </ion-item-options>
       <ion-item>
@@ -68,8 +68,8 @@
       </ion-item>
   
       <ion-item-options>
-        <ion-item-option>
-          <ion-icon slot="icon-only" name="create" (click)="editUser(user.id)"></ion-icon>
+        <ion-item-option (click)="editUser(user.id)">
+          <ion-icon slot="icon-only" name="create"></ion-icon>
         </ion-item-option>
         <ion-item-option color="danger">
           <ion-icon slot="icon-only" name="trash"></ion-icon>
@@ -79,3 +79,5 @@
   
   </ion-list>
 </ion-content> 
+
+<app-timeline></app-timeline>

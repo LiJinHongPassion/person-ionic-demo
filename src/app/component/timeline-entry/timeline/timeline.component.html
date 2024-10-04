@@ -1,0 +1,10 @@
+<!-- timeline.component.html -->
+<!-- timeline.component.html --> 
+<app-timeline-entry
+*ngFor="let entry of entries; let i = index"
+[date]="entry.date"
+[persons]="entry.persons"
+[event]="entry.event"
+[isLast]="entry.length === 1 || i === entries.length - 1"
+[isFirst]="entry.length === 1 || i === 0"
+></app-timeline-entry>

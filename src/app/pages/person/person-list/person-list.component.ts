@@ -6,6 +6,7 @@ import { DataService, Message } from 'src/app/services/data.service';
 import { CommonModalService } from 'src/app/services/modal/common-modal.service';
 import { User } from 'src/app/services/sqlite/models/user';
 import { StorageService } from 'src/app/services/sqlite/services/storage.service';
+import { ToastComponent } from 'src/app/services/toast/toast.component.service';
 
 @Component({
   selector: 'app-person-list',
@@ -18,7 +19,7 @@ export class PersonListComponent implements OnInit{
  
   constructor(
     public storage: StorageService, 
-    private modal: ModalController,
+    public toast: ToastComponent,
     public modalService: CommonModalService,
     private router: Router
   ) { }
@@ -47,7 +48,7 @@ export class PersonListComponent implements OnInit{
   }
 
   deleteUser(id: number){
-    this.modalService.showConfimModal()
+    // this.modalService.showConfimModal()
     this.storage.deleteUserById(id.toString())
   }
   gotoDetail(id: number){

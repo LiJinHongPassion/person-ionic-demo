@@ -10,7 +10,8 @@
     "update-android": "ng build && npx cap copy",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "lint": "ng lint"
+    "lint": "ng lint",
+    "cp": "ionic generate component"
   },
   "private": true,
   "dependencies": {

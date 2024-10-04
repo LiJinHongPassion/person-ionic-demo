@@ -10,6 +10,7 @@ import { TagModule } from 'src/app/component/tag/tag.module';
 import { WorthModule } from 'src/app/component/pipe/worth/worth.module';
 import { AgeModule } from 'src/app/component/pipe/age/age.module';
 import { PersonDetailComponent } from './person-detail/person-detail.component';
+import { TimelineEntryModule } from 'src/app/component/timeline-entry/timeline-entry.module';
 
 const declaraions: any = [
   PersonListComponent,
@@ -27,7 +28,8 @@ const declaraions: any = [
     TranslateModule, 
     TagModule,
     WorthModule,
-    AgeModule
+    AgeModule,
+    TimelineEntryModule
 ],
   declarations: [...declaraions],
   providers: []
