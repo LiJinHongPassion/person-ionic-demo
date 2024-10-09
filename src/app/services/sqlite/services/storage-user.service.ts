@@ -7,7 +7,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { UserUpgradeStatements } from '../upgrades/user.upgrade.statements';
 
 @Injectable()
-export class StorageService {
+export class StorageUserService {
   public userList: BehaviorSubject<User[]> =
   new BehaviorSubject<User[]>([]);
   private databaseName: string = "";

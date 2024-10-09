@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { SQLiteService } from './sqlite.service';
-import { StorageService } from './storage.service';
+import { StorageUserService } from './storage-user.service';
 import { Toast } from '@capacitor/toast';
 
 @Injectable()
@@ -11,7 +11,7 @@ export class InitializeAppService {
 
   constructor(
     private sqliteService: SQLiteService,
-    private storageService: StorageService,
+    private storageService: StorageUserService,
     ) {
 
   }

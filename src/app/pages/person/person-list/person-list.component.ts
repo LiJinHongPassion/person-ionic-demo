@@ -5,7 +5,7 @@ import { of, switchMap } from 'rxjs';
 import { DataService, Message } from 'src/app/services/data.service';
 import { CommonModalService } from 'src/app/services/modal/common-modal.service';
 import { User } from 'src/app/services/sqlite/models/user';
-import { StorageService } from 'src/app/services/sqlite/services/storage.service';
+import { StorageUserService } from 'src/app/services/sqlite/services/storage-user.service';
 import { ToastComponent } from 'src/app/services/toast/toast.component.service';
 
 @Component({
@@ -18,7 +18,7 @@ export class PersonListComponent implements OnInit{
   userList: User[] = []
  
   constructor(
-    public storage: StorageService, 
+    public storage: StorageUserService, 
     public toast: ToastComponent,
     public modalService: CommonModalService,
     private router: Router

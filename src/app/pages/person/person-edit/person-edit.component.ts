@@ -4,7 +4,7 @@ import { Filesystem, Directory, Encoding } from '@capacitor/filesystem';
 import { Share } from '@capacitor/share';
 import { switchMap, of } from 'rxjs';
 import { toEditUser, toEntityUser, User } from 'src/app/services/sqlite/models/user';
-import { StorageService } from 'src/app/services/sqlite/services/storage.service';
+import { StorageUserService } from 'src/app/services/sqlite/services/storage-user.service';
 import { ToastComponent } from 'src/app/services/toast/toast.component.service';
 
 @Component({
@@ -97,11 +97,11 @@ export class PersonEditComponent implements OnInit {
   }
 
   constructor(
-    private storage: StorageService,
+    private storage: StorageUserService,
     private toastService: ToastComponent, 
     public router: Router,
     private acRouter: ActivatedRoute,
-    private storageService: StorageService
+    private storageService: StorageUserService
   ) {}
   ngOnInit(): void {
     const params: any = this.acRouter.snapshot.params;

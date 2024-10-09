@@ -14,7 +14,7 @@ import { TranslateHttpLoader } from "@ngx-translate/http-loader";
 import { DbnameVersionService } from './services/sqlite/services/dbname-version.service';
 import { InitializeAppService } from './services/sqlite/services/initialize.app.service';
 import { SQLiteService } from './services/sqlite/services/sqlite.service';
-import { StorageService } from './services/sqlite/services/storage.service';
+import { StorageUserService } from './services/sqlite/services/storage-user.service';
 
 
 // 支持AOT
@@ -53,7 +53,7 @@ export function initializeFactory(init: InitializeAppService) {
   providers: [
     SQLiteService,
     InitializeAppService,
-    StorageService,
+    StorageUserService,
     DbnameVersionService,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     {

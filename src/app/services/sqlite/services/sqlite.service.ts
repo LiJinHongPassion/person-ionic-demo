@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 
 import { Capacitor } from '@capacitor/core';
 import { CapacitorSQLite, SQLiteConnection, SQLiteDBConnection, CapacitorSQLitePlugin,
-  capSQLiteUpgradeOptions, capSQLiteResult, capSQLiteValues} from '@capacitor-community/sqlite';
+  capSQLiteUpgradeOptions} from '@capacitor-community/sqlite';
 
 @Injectable()
 

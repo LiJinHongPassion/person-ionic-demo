@@ -1,7 +1,7 @@
 import { query } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { StorageService } from 'src/app/services/sqlite/services/storage.service';
+import { StorageUserService } from 'src/app/services/sqlite/services/storage-user.service';
 import { ToastComponent } from 'src/app/services/toast/toast.component.service';
 
 @Component({
@@ -14,7 +14,7 @@ export class PersonDetailComponent  implements OnInit {
   user: any = {}
   constructor(private acRouter: ActivatedRoute,
     private toast: ToastComponent,
-    private storageService: StorageService
+    private storageService: StorageUserService
   ) { }
 
   ngOnInit() {

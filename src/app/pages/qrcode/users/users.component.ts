@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Filesystem, Directory, Encoding, ReaddirResult } from '@capacitor/filesystem';
 import { of, switchMap } from 'rxjs';
 import { User } from 'src/app/services/sqlite/models/user';
-import { StorageService } from 'src/app/services/sqlite/services/storage.service';
+import { StorageUserService } from 'src/app/services/sqlite/services/storage-user.service';
 import { ToastComponent } from 'src/app/services/toast/toast.component.service';
 import { Share } from '@capacitor/share';
 
@@ -16,7 +16,7 @@ export class UsersComponent  implements OnInit {
   userList: User[] = []
   isWeb: any
 
-  constructor(private storage: StorageService,private toastService: ToastComponent) {}
+  constructor(private storage: StorageUserService,private toastService: ToastComponent) {}
 
   ngOnInit() {
     try {
