@@ -7,6 +7,10 @@ const routes: Routes = [
     loadChildren: () => import('./pages/person/person.module').then(m => m.PersonModule),
   },
   {
+    path: 'event',
+    loadChildren: () => import('./pages/event/event.module').then(m => m.EventModule),
+  },
+  {
     path: 'home',
     loadChildren: () => import('./pages/tabs/tabs.module').then(m => m.TabsPageModule)
   },
