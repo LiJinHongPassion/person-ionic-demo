@@ -1,3 +1,77 @@
-<p>
-  event-edit works!
-</p>
+<ion-header [translucent]="true">
+  <ion-toolbar>
+
+    <ion-button slot="start" [routerLink]="['/event']" >
+      <ion-icon size="large" slot="icon-only" ios="chevron-back" md="chevron-back" ></ion-icon>
+    </ion-button>
+    <ion-title >
+    </ion-title>
+
+    <ion-buttons slot="end">
+      <ion-button [routerLink]="['/person/edit']" >
+        <ion-icon size="large" slot="icon-only" ios="refresh-circle" md="refresh-circle" (click)="clearEvent()"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-list>
+    <!-- 生日 -->
+    <ion-row>
+      <ion-col size="12">
+        <ion-item>
+          <ion-label>{{'event.birthday' | translate}}</ion-label>
+          <ion-label>{{event.birthday | date : 'yyyy-mm-dd'}}</ion-label>
+        </ion-item>
+      </ion-col>
+      <ion-col size="7">
+        <ion-item>
+          <ion-datetime-button datetime="datetime" ></ion-datetime-button>
+          <ion-modal [keepContentsMounted]="true">
+            <ng-template>
+              <ion-datetime (ionChange)="ionBirthdayChange()" [(ngModel)]="tempDate" presentation="date" id="datetime"></ion-datetime>
+            </ng-template>
+          </ion-modal>
+
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <!-- 学历 -->
+    <ion-row>
+      <ion-col size="12">
+        <ion-item>
+          <ion-select interface="popover" label="{{'event.education' | translate}}" [(ngModel)]="event.education" >
+            <ion-select-option value="0">{{'doctor' | translate}}</ion-select-option>
+            <ion-select-option value="1">{{'master' | translate}}</ion-select-option>
+            <ion-select-option value="2">{{'bachelor' | translate}}</ion-select-option> 
+            <ion-select-option value="3">{{'junior.college' | translate}}</ion-select-option>
+            <ion-select-option value="4">{{'secondary.school' | translate}}</ion-select-option>
+            <ion-select-option value="9">{{'other' | translate}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <!-- 价值程度 -->
+    <ion-row>
+      <ion-col size="12">
+        <ion-item>
+          <ion-select interface="popover" label="{{'event.worth' | translate}}" [(ngModel)]="event.value_degree" >
+            <ion-select-option value="0">{{'high' | translate}}</ion-select-option>
+            <ion-select-option value="1">{{'middle' | translate}}</ion-select-option>
+            <ion-select-option value="2">{{'low' | translate}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="12"> 
+        <ion-button
+        (click)="submit()" expand="block" fill="outline">{{'confirm' | translate}} 
+        </ion-button> 
+    </ion-col>
+    </ion-row>
+  </ion-list>
+
+

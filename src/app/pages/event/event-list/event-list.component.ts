@@ -13,11 +13,6 @@ export class EventListComponent  implements OnInit {
   constructor(private eventService: StorageEventService) { }
 
   ngOnInit() {
-    // this.eventService.addEvent({
-    //   name: '测试',
-    //   date: '2022-01-01',
-    //   description: "这是描述"
-    // });
 
     this.eventService.eventState().pipe(
       switchMap(res => {
