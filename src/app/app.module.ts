@@ -15,6 +15,7 @@ import { DbnameVersionService } from './services/sqlite/services/dbname-version.
 import { InitializeAppService } from './services/sqlite/services/initialize.app.service';
 import { SQLiteService } from './services/sqlite/services/sqlite.service';
 import { StorageUserService } from './services/sqlite/services/storage-user.service';
+import { StorageEventService } from './services/sqlite/services/storage-event.service';
 
 
 // 支持AOT
@@ -54,6 +55,7 @@ export function initializeFactory(init: InitializeAppService) {
     SQLiteService,
     InitializeAppService,
     StorageUserService,
+    StorageEventService,
     DbnameVersionService,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     {
