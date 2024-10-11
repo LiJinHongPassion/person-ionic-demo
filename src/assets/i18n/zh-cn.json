@@ -36,6 +36,9 @@
     "secondary.school": "中专",
     "other": "其他",
     "confirm": "确认",
-    "back.and.retry": "返回请重试"
+    "back.and.retry": "返回请重试",
+    "event.date": "时间",
+    "event.person": "人物",
+    "event.desc": "描述"
     
 }

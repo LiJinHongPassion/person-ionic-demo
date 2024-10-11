@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { toEntityUser, toEditUser } from 'src/app/services/sqlite/models/user';
+import { switchMap, of } from 'rxjs';
 import { StorageEventService } from 'src/app/services/sqlite/services/storage-event.service';
 import { StorageUserService } from 'src/app/services/sqlite/services/storage-user.service';
-import { ToastComponent } from 'src/app/services/toast/toast.component.service';
 
 @Component({
   selector: 'app-event-edit',
@@ -11,25 +10,15 @@ import { ToastComponent } from 'src/app/services/toast/toast.component.service';
   styleUrls: ['./event-edit.component.scss'],
 })
 export class EventEditComponent  implements OnInit { 
- 
-
-  save(){
-    this.eventService.addEvent({
-      person: '测试,lll',
-      date: '2022-01-01',
-      description: "这是描述"
-    });
-  }
-
   event: any = {
     id: 0,
-    date: '',
+    date: new Date().toISOString().slice(0, 19),
     description: '',
     person: ''
   }
   default = {
     id: 0,
-    date: '',
+    date: new Date().toISOString().slice(0, 19),
     description: '',
     person: ''
   }
@@ -37,28 +26,10 @@ export class EventEditComponent  implements OnInit {
   tempField = '';
   tempHobbies = '';
   tempProfession = '';
-  tempDate = '2000-11-02T01:22:00';
 
 
-  ionBirthdayChange(){
-    if(!this.tempDate){
-      return;
-    }
-    this.event.date = this.tempDate;
-  }
+  userList: any[] = [];
 
-  submit() { 
-    const isAdd = this.event.id === 0;
-    const saveUser = toEntityUser(this.event, isAdd);
-    console.log(saveUser)
-    isAdd && this.storage.addUser(saveUser).then(()=>{
-      this.event = this.default;
-      this.router.navigate(['/person'])
-    })
-    !isAdd&& this.storage.updateUserById(this.event.id, saveUser).then(()=>{
-      this.router.navigate(['/person'])
-    })
-  }
   clearEvent(){
     this.event = this.default;
   }
@@ -72,13 +43,47 @@ export class EventEditComponent  implements OnInit {
   ) {}
   ngOnInit(): void {
     const params: any = this.acRouter.snapshot.params;
-    const userId = params?.id;
+    const eventId = params?.id;
    
-    this.storageService.getUserById(userId).then(res=>{
-      this.event = toEditUser(res);
+    this.eventService.getEventById(eventId).then(res=>{
+      this.event = res;
       console.log(this.event)
     })
+
+
+    this.storage.userState().pipe(
+      switchMap(res => {
+        if (res) {
+          return this.storage.fetchUsers();
+        } else {
+          return of([]); // Return an empty array when res is false
+        }
+      })
+    ).subscribe(data => {
+      console.log(data)
+      this.userList = data; // Update the user list when the data changes
+    });
+
+
   }
  
+  save(){
+    console.log(this.event)
+    const temp = { ...this.event }
+      temp.person = temp.person.join(',')
+    
+
+    const isAdd = this.event.id === 0;
+    isAdd && this.eventService.addEvent({
+      ...temp
+    }).then(()=>{
+      this.router.navigate(['/event'])
+    });
+    !isAdd&& this.eventService.updateEventById(temp.id, {
+      ...temp
+    }).then(()=>{
+      this.router.navigate(['/event'])
+    });
+  }
 
 }
