@@ -12,6 +12,8 @@ import { TimelineEntryModule } from 'src/app/component/timeline-entry/timeline-e
 import { EventEditComponent } from './event-edit/event-edit.component';
 import { EventInfoComponent } from './event-info/event-info.component';
 import { MultiSelectSearchModule } from 'src/app/component/multi-select-search/multi-select-search.module';
+import { UserModule } from 'src/app/component/pipe/user/user.module';
+import { UserPipe } from 'src/app/component/pipe/user/user.pipe';
 
 
 
@@ -28,7 +30,9 @@ import { MultiSelectSearchModule } from 'src/app/component/multi-select-search/m
     WorthModule,
     AgeModule,
     TimelineEntryModule,
-    MultiSelectSearchModule
-]
+    MultiSelectSearchModule,
+    UserModule
+],
+providers: [UserPipe]
 })
 export class EventModule { }

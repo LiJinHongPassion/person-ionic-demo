@@ -68,22 +68,22 @@ export class StorageEventService {
   async addEvent(event: any) {
     const sql = `INSERT INTO events (
                               date,
-                              pserson,
+                              person,
                               description
                             ) VALUES (?,?,?);`;
     await this.db.run(sql,[
       event.date,
-      event.pserson,
+      event.person,
       event.description,
     ]);
     await this.getEvents();
   }
 
-  async updateEventById(id: number, event: { date: any; description: any; pserson: any; }) {
+  async updateEventById(id: number, event: { date: any; description: any; person: any; }) {
     const sql = `UPDATE events SET 
     date='${event.date}',
     description='${event.description}',
-    pserson='${event.pserson}'
+    person='${event.person}'
      WHERE id=${id.toString()}`;
     await this.db.run(sql);
     await this.getEvents();

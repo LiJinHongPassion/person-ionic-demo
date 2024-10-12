@@ -1,12 +1,12 @@
 export class EventUpgradeStatements {
   eventUpgrades = [
     {
-      toVersion: 5,
+      toVersion: 8,
       statements: [
         `CREATE TABLE IF NOT EXISTS events(
           id INTEGER PRIMARY KEY AUTOINCREMENT,
           date TEXT NOT NULL,
-          pserson TEXT,
+          person TEXT,
           description TEXT
         );`
       ]

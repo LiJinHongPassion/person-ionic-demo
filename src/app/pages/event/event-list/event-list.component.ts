@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { of, switchMap } from 'rxjs';
+import { UserPipe } from 'src/app/component/pipe/user/user.pipe';
 import { StorageEventService } from 'src/app/services/sqlite/services/storage-event.service';
+import { StorageUserService } from 'src/app/services/sqlite/services/storage-user.service';
 
 @Component({
   selector: 'app-event-list',
@@ -10,28 +12,49 @@ import { StorageEventService } from 'src/app/services/sqlite/services/storage-ev
 export class EventListComponent  implements OnInit {
 
   eventList: any[] = []
-  constructor(private eventService: StorageEventService) { }
+  userList: any[] = []
+  constructor(
+    private eventService: StorageEventService,
+    private userService: StorageUserService,
+    private userPipe: UserPipe
+  ) { }
 
   ngOnInit() {
-
-    this.eventService.eventState().pipe(
+    this.userService.userState().pipe(
       switchMap(res => {
         if (res) {
-          return this.eventService.fetchEvents();
+          return this.userService.fetchUsers();
         } else {
           return of([]); // Return an empty array when res is false
         }
       })
-    ).subscribe(data => {
-      console.log(data)
-      this.eventList = data.map((d:any)=>{
-        return {
-          description: d.description,
-          date: d.date,
-          pserson: (d.pserson??'').split(',')
-        }
-      })
-    }); 
+    ).subscribe(data => { 
+      this.userList = data; // Update the user list when the data changes
+      this.eventService.eventState().pipe(
+        switchMap(res => {
+          if (res) {
+            return this.eventService.fetchEvents();
+          } else {
+            return of([]); // Return an empty array when res is false
+          }
+        })
+      ).subscribe(data => { 
+        this.eventList = data.map((d:any)=>{
+         const names = (d.person??'').split(',').map((id: string)=>{
+            return {name: this.userPipe.transform(id, this.userList)}
+          }) 
+          console.log('names', names)
+          return {
+            description: d.description,
+            date: d.date,
+            persons: names
+          }
+        })
+      }); 
+
+    });
+
+    
   }
 
 }

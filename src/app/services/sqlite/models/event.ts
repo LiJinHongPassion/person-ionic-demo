@@ -1,7 +1,7 @@
 export interface Event {
   id: number
   date: string
-  persons: string[]
+  person: string[]
   description: string // 逗号分隔
 
 }

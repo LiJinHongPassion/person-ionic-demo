@@ -4,7 +4,7 @@
     <span class="timeline-date">{{ date }}</span>
     <div class="timeline-events">
       <span *ngFor="let person of persons" class="timeline-event">
-        <span class="timeline-person">{{ person.name }}</span>
+        <span class="timeline-person">[ {{ person.name }} ]</span>
       </span>
       <div class="timeline-description">{{ description }}</div>
     </div>

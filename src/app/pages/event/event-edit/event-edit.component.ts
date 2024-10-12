@@ -77,11 +77,10 @@ export class EventEditComponent  implements OnInit {
   }
  
   save(){
-    console.log(this.event)
     const temp = { ...this.event }
-      temp.person = temp.person.join(',')
-    
+    temp.person = temp.person.join(',')
 
+    console.log('保存', temp)
     const isAdd = this.event.id === 0;
     isAdd && this.eventService.addEvent({
       ...temp
