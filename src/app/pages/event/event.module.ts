@@ -11,6 +11,7 @@ import { TagModule } from 'src/app/component/tag/tag.module';
 import { TimelineEntryModule } from 'src/app/component/timeline-entry/timeline-entry.module';
 import { EventEditComponent } from './event-edit/event-edit.component';
 import { EventInfoComponent } from './event-info/event-info.component';
+import { MultiSelectSearchModule } from 'src/app/component/multi-select-search/multi-select-search.module';
 
 
 
@@ -22,11 +23,12 @@ import { EventInfoComponent } from './event-info/event-info.component';
     FormsModule,
     IonicModule,
     // 引入国际化模块
-    TranslateModule, 
+    TranslateModule,
     TagModule,
     WorthModule,
     AgeModule,
-    TimelineEntryModule
-  ]
+    TimelineEntryModule,
+    MultiSelectSearchModule
+]
 })
 export class EventModule { }

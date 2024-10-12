@@ -35,12 +35,16 @@
     <!-- 人员 -->
     <ion-row>
       <ion-col size="12">
-        <ion-item>
+        <!-- <ion-item>
           <ion-select label="{{'event.person' | translate}}" multiple="true" [(ngModel)]="event.person" [interfaceOptions]="{ header: '选择人员' }">
             <ion-select-option *ngFor="let person of userList" [value]="person.id">
               {{ person.name }}
             </ion-select-option>
           </ion-select>
+        </ion-item> -->
+        <ion-item [button]="true" [detail]="false" id="select-persons">
+          <ion-label>{{'event.person' | translate}}</ion-label>
+          <div slot="end" id="selected-persons">{{ selectedPersonsText }}{{'person' | translate}}</div>
         </ion-item>
       </ion-col>
     </ion-row>
@@ -61,4 +65,15 @@
     </ion-row>
   </ion-list>
 
-
+  <ion-modal trigger="select-persons" #modal>
+    <ng-template>
+      <app-multi-select-search
+        class="ion-page"
+        title="{{'select.person' | translate}}"
+        [items]="userList"
+        [selectedItems]="event.person"
+        (selectionChange)="personSelectionChanged($event)"
+        (selectionCancel)="modal.dismiss()"
+      ></app-multi-select-search>
+    </ng-template>
+  </ion-modal>

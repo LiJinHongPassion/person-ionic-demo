@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { IonModal } from '@ionic/angular';
 import { switchMap, of } from 'rxjs';
+import { Item } from 'src/app/component/multi-select-search/multi-select-search.component';
 import { StorageEventService } from 'src/app/services/sqlite/services/storage-event.service';
 import { StorageUserService } from 'src/app/services/sqlite/services/storage-user.service';
 
@@ -10,6 +12,9 @@ import { StorageUserService } from 'src/app/services/sqlite/services/storage-use
   styleUrls: ['./event-edit.component.scss'],
 })
 export class EventEditComponent  implements OnInit { 
+
+  @ViewChild('modal', { static: true }) modal!: IonModal;
+  
   event: any = {
     id: 0,
     date: new Date().toISOString().slice(0, 19),
@@ -39,7 +44,6 @@ export class EventEditComponent  implements OnInit {
     private eventService: StorageEventService,
     public router: Router,
     private acRouter: ActivatedRoute,
-    private storageService: StorageUserService
   ) {}
   ngOnInit(): void {
     const params: any = this.acRouter.snapshot.params;
@@ -61,7 +65,12 @@ export class EventEditComponent  implements OnInit {
       })
     ).subscribe(data => {
       console.log(data)
-      this.userList = data; // Update the user list when the data changes
+      this.userList = data.map(d=>{
+        return {
+          text: d.name,
+          value: d.id
+        }
+      }); // Update the user list when the data changes
     });
 
 
@@ -86,4 +95,22 @@ export class EventEditComponent  implements OnInit {
     });
   }
 
+
+  selectedPersonsText = '0';
+
+
+  private formatData(data: string[]) {
+    if (data.length === 1) {
+      const person: any = this.userList.find((user) => user.value === data[0]);
+      return person.text;
+    }
+
+    return `${data.length}`;
+  }
+
+  personSelectionChanged(persons: string[]) {
+    this.event.person = persons;
+    this.selectedPersonsText = this.formatData(this.event.person);
+    this.modal.dismiss();
+  }
 }
