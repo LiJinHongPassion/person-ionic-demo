@@ -8,7 +8,7 @@ export class UserPipe implements PipeTransform {
     if (!userId || !users) {
       return '';
     }
-    const user = users.find(u => u.id === userId);
+    const user = users.find(u => u.id == userId);
     return user?.name || user?.nickname || userId;
   }
 }

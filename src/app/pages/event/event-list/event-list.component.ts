@@ -28,8 +28,8 @@ export class EventListComponent  implements OnInit {
           return of([]); // Return an empty array when res is false
         }
       })
-    ).subscribe(data => { 
-      this.userList = data; // Update the user list when the data changes
+    ).subscribe(userdata => { 
+      this.userList = userdata; // Update the user list when the data changes
       this.eventService.eventState().pipe(
         switchMap(res => {
           if (res) {
@@ -41,9 +41,8 @@ export class EventListComponent  implements OnInit {
       ).subscribe(data => { 
         this.eventList = data.map((d:any)=>{
          const names = (d.person??'').split(',').map((id: string)=>{
-            return {name: this.userPipe.transform(id, this.userList)}
+            return {name: this.userPipe.transform(id, userdata)}
           }) 
-          console.log('names', names)
           return {
             description: d.description,
             date: d.date,
