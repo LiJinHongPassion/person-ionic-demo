@@ -19,3 +19,11 @@
     font-size: 14px;
     color: #666;
   }
+
+
+ion-item::part(native) {
+    background: none;
+    border: none;
+    --border-style: none;
+
+  }

@@ -7,14 +7,38 @@
 [description]="entry.description"
 [isLast]="entry.length === 1 || i === entries.length - 1"
 [isFirst]="entry.length === 1 || i === 0"
+class="time-item"
 >
     <div >
-        <div class="timeline-date">{{ entry.date | date : 'yyyy-mm-dd hh:MM:ss' }}</div>
+
+        <!-- <div class="timeline-date">{{ entry.date | date : 'yyyy-mm-dd hh:MM:ss' }}</div>
         <div class="timeline-events">
             <div class="timeline-description">{{ entry.description }}</div>
             <span *ngFor="let person of entry.persons" class="timeline-event"> 
                 <app-tag [label]="person.name"></app-tag>
             </span>
-        </div>
+        </div> -->
+
+
+        <ion-item-sliding> 
+            <ion-item> 
+                <div>
+
+                    <div class="timeline-date">{{ entry.date | date : 'yyyy-mm-dd hh:MM:ss' }}</div>
+                    <div class="timeline-events">
+                        <div class="timeline-description">{{ entry.description }}</div>
+                        <span *ngFor="let person of entry.persons" class="timeline-event"> 
+                            <app-tag [label]="person.name"></app-tag>
+                        </span>
+                    </div>
+                </div>
+            </ion-item>
+        
+            <ion-item-options> 
+                <ion-item-option color="danger" (click)="deleteEvent(entry.id)">
+                    <ion-icon slot="icon-only" name="trash"></ion-icon>
+                </ion-item-option> 
+            </ion-item-options>
+          </ion-item-sliding>
     </div>
 </app-timeline-entry>

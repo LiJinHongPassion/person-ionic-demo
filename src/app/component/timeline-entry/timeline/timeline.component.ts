@@ -6,6 +6,9 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./timeline.component.scss'],
 })
 export class TimelineComponent {
+deleteEvent(arg0: any) {
+throw new Error('Method not implemented.');
+}
 
   constructor() { } 
 
