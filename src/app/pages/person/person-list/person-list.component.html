@@ -61,9 +61,9 @@
           <ion-row *ngIf="user.hobbies">
               <app-tag *ngFor="let item of user.hobbies.split(',')" [label]="item" icon="heart"></app-tag>
           </ion-row>
-          <ion-row *ngIf="user.hobbies">
+          <!-- <ion-row *ngIf="user.hobbies">
               事件
-          </ion-row>
+          </ion-row> -->
         </ion-grid>
       </ion-item>
   

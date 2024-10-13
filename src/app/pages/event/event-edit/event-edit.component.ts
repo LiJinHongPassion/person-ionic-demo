@@ -77,6 +77,9 @@ export class EventEditComponent  implements OnInit {
   }
  
   save(){
+    if(this.event.person.length == 0 || this.event.description.length == 0){
+      return;
+    }
     const temp = { ...this.event }
     temp.person = temp.person.join(',')
 
