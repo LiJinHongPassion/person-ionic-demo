@@ -90,6 +90,7 @@ export class StorageEventService {
   }
   async deleteEventById(id: string) {
     const sql = `DELETE FROM events WHERE id=${id}`;
+    console.log('sql', sql)
     await this.db.run(sql);
     await this.getEvents();
   }

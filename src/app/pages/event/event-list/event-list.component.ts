@@ -44,6 +44,7 @@ export class EventListComponent  implements OnInit {
             return {name: this.userPipe.transform(id, userdata)}
           }) 
           return {
+            id: d.id,
             description: d.description,
             date: d.date,
             persons: names
@@ -55,5 +56,9 @@ export class EventListComponent  implements OnInit {
 
     
   }
-
+  deleteEventClick(event: any) {
+    console.log(event)
+    this.eventService.deleteEventById(event.id);
+    this.eventService.fetchEvents();
+  }
 }

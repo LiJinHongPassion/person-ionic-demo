@@ -23,6 +23,7 @@
   
   
   <ion-list>
-    <app-timeline [entries]="eventList"></app-timeline>
+    <app-timeline [entries]="eventList"
+    (deleteClick)="deleteEventClick($event)"></app-timeline>
   </ion-list>
 </ion-content> 
