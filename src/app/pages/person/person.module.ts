@@ -30,7 +30,7 @@ const declaraions: any = [
     WorthModule,
     AgeModule,
     TimelineEntryModule
-],
+  ],
   declarations: [...declaraions],
   providers: []
 })

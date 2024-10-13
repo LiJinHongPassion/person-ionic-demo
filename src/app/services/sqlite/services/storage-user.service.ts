@@ -49,6 +49,8 @@ export class StorageUserService {
 
   async loadUsers() {
     // await this.db.run('DROP TABLE IF EXISTS users;')
+    // await this.db.run('DELETE FROM users;')
+    // await this.db.run('')
     const users: User[]= (await this.db.query('SELECT * FROM users;')).values as User[];
     this.userList.next(users);
   }
@@ -114,6 +116,16 @@ export class StorageUserService {
   async deleteUserById(id: string) {
     const sql = `DELETE FROM users WHERE id=${id}`;
     await this.db.run(sql);
+    await this.getUsers();
+  }
+
+
+  async insertUsers(users: any[]) {
+    const sql = `INSERT INTO users (name, nickname, gender, field, type, profession, birthday, hobbies, education, phone, value_degree) VALUES `;
+    const values = users.map(user => `('${user.name || ""}', '${user.nickname || ""}', '${user.gender || ""}', '${user.field || ""}', '${user.type || ""}', '${user.profession || ""}', '${user.birthday || ""}', '${user.hobbies || ""}', '${user.education || ""}', '${user.phone || ""}', '${user.value_degree || ""}')`);
+
+    const query = `${sql} ${values.join(', ')}`;
+    await this.db.run(query); 
     await this.getUsers();
   }
 }

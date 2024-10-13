@@ -1,0 +1,13 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>导入Excel</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  
+<ion-item>
+  <ion-label>选择Excel文件</ion-label>
+  <input type="file" accept=".xlsx, .xls" (change)="onFileSelected($event)" />
+</ion-item>
+</ion-content>
