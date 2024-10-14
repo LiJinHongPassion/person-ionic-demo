@@ -2,13 +2,14 @@
 import { Injectable } from '@angular/core';
 import * as xlsx from 'xlsx';
 import { StorageUserService } from './storage-user.service';
+import { ToastComponent } from '../../toast/toast.component.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataImportService { 
 
-  constructor(private storageUserService: StorageUserService) { }
+  constructor(private storageUserService: StorageUserService, private toast: ToastComponent) { }
 
   async importExcelData(file: any) {
     const reader = new FileReader();
@@ -19,8 +20,12 @@ export class DataImportService {
       const worksheet = workbook.Sheets[sheetName];
       const jsonData = xlsx.utils.sheet_to_json(worksheet);
       console.log(jsonData); // 处理或使用数据
-      
-      this.storageUserService.insertUsers(jsonData)
+      if(jsonData.length > 0){
+        this.storageUserService.insertUsers(jsonData)
+        this.toast.showInfo('success: ' + jsonData.length)
+      }else{
+        this.toast.showError('empty')
+      }
       
     }
 

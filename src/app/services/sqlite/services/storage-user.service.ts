@@ -121,6 +121,9 @@ export class StorageUserService {
 
 
   async insertUsers(users: any[]) {
+    if(users.length === 0){
+      return;
+    }
     const sql = `INSERT INTO users (name, nickname, gender, field, type, profession, birthday, hobbies, education, phone, value_degree) VALUES `;
     const values = users.map(user => `('${user.name || ""}', '${user.nickname || ""}', '${user.gender || ""}', '${user.field || ""}', '${user.type || ""}', '${user.profession || ""}', '${user.birthday || ""}', '${user.hobbies || ""}', '${user.education || ""}', '${user.phone || ""}', '${user.value_degree || ""}')`);
 
