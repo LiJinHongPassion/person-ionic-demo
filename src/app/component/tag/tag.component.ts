@@ -16,8 +16,11 @@ export class TagComponent  {
 
   getRandomPrettyColor() {
     const colors = ['#f3e794', '#e0e4f7', '#e795c9', '#d3f4ba', '#b7e2f5', '#fbd8b3', '#b1e4f5'];
-    const randomIndex = this.hashCode(this.label) % (colors.length + 1);
-    return colors[randomIndex];
+    const randomIndex = this.hashCode(this.label) % colors.length;
+    if(randomIndex >= 0){
+      return colors[randomIndex];
+    }
+    return colors[0];
   }
   onClearClick() {
     this.clearTagClick.emit();
