@@ -61,4 +61,5 @@ export class PersonListComponent implements OnInit{
   search(){
     this.displayUserList = this.userList.filter(u=>u.name.includes(this.searchValue) || u.nickname.includes(this.searchValue))
   }
+ 
 }

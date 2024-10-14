@@ -10,7 +10,7 @@
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
-  <ion-searchbar [(ngModel)]="searchValue" (ionInput)="search()"></ion-searchbar>
+  <ion-searchbar [(ngModel)]="searchValue" (ionInput)="search()" debounce="500"></ion-searchbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
