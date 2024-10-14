@@ -1,8 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ModalController, RefresherCustomEvent } from '@ionic/angular';
 import { of, switchMap } from 'rxjs';
-import { DataService, Message } from 'src/app/services/data.service';
 import { CommonModalService } from 'src/app/services/modal/common-modal.service';
 import { User } from 'src/app/services/sqlite/models/user';
 import { StorageUserService } from 'src/app/services/sqlite/services/storage-user.service';
@@ -14,8 +12,9 @@ import { ToastComponent } from 'src/app/services/toast/toast.component.service';
   styleUrls: ['./person-list.component.scss'],
 })
 export class PersonListComponent implements OnInit{
-
+  searchValue = ''
   userList: User[] = []
+  displayUserList: User[] = []
  
   constructor(
     public storage: StorageUserService, 
@@ -36,6 +35,7 @@ export class PersonListComponent implements OnInit{
       ).subscribe(data => {
         console.log(data)
         this.userList = data; // Update the user list when the data changes
+        this.displayUserList = this.userList;
       });
 
     } catch(err) {
@@ -56,5 +56,9 @@ export class PersonListComponent implements OnInit{
   }
   editUser(id: number){
     this.router.navigate([`/person/modify/${id}`])
+  }
+
+  search(){
+    this.displayUserList = this.userList.filter(u=>u.name.includes(this.searchValue) || u.nickname.includes(this.searchValue))
   }
 }

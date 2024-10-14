@@ -10,6 +10,7 @@
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
+  <ion-searchbar [(ngModel)]="searchValue" (ionInput)="search()"></ion-searchbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
@@ -17,22 +18,8 @@
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
   
-  <!-- <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title  slot="start">
-        {{'person.mgmt' | translate}}
-      </ion-title>
-
-      <ion-buttons slot="end">
-        <ion-button>
-          <ion-icon slot="icon-only" ios="person-add" md="person-add"></ion-icon>
-        </ion-button>
-      </ion-buttons>
-    </ion-toolbar>
-  </ion-header> -->
-  
   <ion-list>
-    <ion-item-sliding *ngFor="let user of userList">
+    <ion-item-sliding *ngFor="let user of displayUserList">
       <ion-item-options side="start"> 
         <ion-item-option color="danger" (click)="deleteUser(user.id)">
           <ion-icon slot="icon-only" name="trash"></ion-icon>
