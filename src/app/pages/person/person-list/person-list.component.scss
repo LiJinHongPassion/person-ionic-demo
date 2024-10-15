@@ -1,3 +1,22 @@
 .header{
     font-size: 60px;
 }
+
+/* app.component.css */
+.example-viewport {
+    height: 100vh;
+    width: 100%;
+  }
+  
+  .example-item {
+    min-height: 110px; /* 确保这与itemSize相匹配 */
+    border-bottom: 1px solid gray;
+  }
+
+
+ion-item::part(native) {
+    background: none;
+    border: none;
+    --border-style: none;
+
+  }

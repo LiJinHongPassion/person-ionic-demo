@@ -15,7 +15,7 @@ export class PersonListComponent implements OnInit{
   searchValue = ''
   userList: User[] = []
   displayUserList: User[] = []
- 
+  items = Array.from({ length: 10000 }).map((_, i) => `Item #${i}`);
   constructor(
     public storage: StorageUserService, 
     public toast: ToastComponent,

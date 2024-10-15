@@ -13,13 +13,17 @@
   <ion-searchbar [(ngModel)]="searchValue" (ionInput)="search()" debounce="500"></ion-searchbar>
 </ion-header>
 
+
 <ion-content [fullscreen]="true">
   <ion-refresher slot="fixed" (ionRefresh)="refresh($event)">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
-  
-  <ion-list>
-    <ion-item-sliding *ngFor="let user of displayUserList">
+
+
+
+<cdk-virtual-scroll-viewport itemSize="110" minBufferPx="900" maxBufferPx="1350" class="example-viewport">
+  <!-- <div class="example-item"> -->
+    <ion-item-sliding *cdkVirtualFor="let user of displayUserList" class="example-item">
       <ion-item-options side="start"> 
         <ion-item-option color="danger" (click)="deleteUser(user.id)">
           <ion-icon slot="icon-only" name="trash"></ion-icon>
@@ -64,5 +68,7 @@
       </ion-item-options>
     </ion-item-sliding>
   
-  </ion-list>
+  <!-- </div> -->
+</cdk-virtual-scroll-viewport>
+
 </ion-content> 
