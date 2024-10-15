@@ -10,7 +10,7 @@
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
-  <ion-searchbar [(ngModel)]="searchValue" (ionInput)="search()" debounce="500"></ion-searchbar>
+  <ion-searchbar placeholder="Search quantity: {{userList.length || 0}}" [(ngModel)]="searchValue" (ionInput)="search()" debounce="500"></ion-searchbar>
 </ion-header>
 
 
@@ -62,9 +62,9 @@
         <ion-item-option (click)="editUser(user.id)">
           <ion-icon slot="icon-only" name="create"></ion-icon>
         </ion-item-option>
-        <ion-item-option color="danger">
+        <!-- <ion-item-option color="danger">
           <ion-icon slot="icon-only" name="trash"></ion-icon>
-        </ion-item-option>
+        </ion-item-option> -->
       </ion-item-options>
     </ion-item-sliding>
   

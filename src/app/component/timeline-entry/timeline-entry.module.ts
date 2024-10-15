@@ -4,6 +4,7 @@ import { IonicModule } from '@ionic/angular';
 import { TimelineEntryComponent } from './timeline-entry.component';
 import { TagModule } from '../tag/tag.module';
 import { TimelineComponent } from './timeline/timeline.component';
+import { ScrollingModule } from '@angular/cdk/scrolling';
 
 
 
@@ -12,7 +13,8 @@ import { TimelineComponent } from './timeline/timeline.component';
   imports: [
     IonicModule,
     CommonModule,
-    TagModule
+    TagModule,
+    ScrollingModule
   ],
   exports: [TimelineEntryComponent, TimelineComponent]
 })
